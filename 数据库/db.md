@@ -1,21 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
-**Table of Contents**
-   * [数据库](#数据库)
-      * [1 事务](#1-事务)
-      * [2 数据库索引](#2-数据库索引)
-      * [3 Redis原理](#3-redis原理)
-         * [Redis是什么？](#redis是什么)
-         * [Redis数据库](#redis数据库)
-         * [Redis缺点](#redis缺点)
-         * [Redis为什么这么快](#Redis为什么这么快)
-      * [4 乐观锁和悲观锁](#4-乐观锁和悲观锁)
-      * [5 MVCC](#5-mvcc)
-         * [<a href="http://lib.csdn.net/base/mysql">MySQL</a>的innodb引擎是如何实现MVCC的](#mysql的innodb引擎是如何实现mvcc的)
-      * [6 MyISAM和InnoDB](#6-myisam和innodb)
-<!-- markdown-toc end -->
-
-
-
 # 数据库
 
 ## 1 事务
@@ -100,6 +82,21 @@ user like '%lee%'
 
 mysql 数据库引擎: http://www.cnblogs.com/0201zcr/p/5296843.html
 MySQL存储引擎－－MyISAM与InnoDB区别: https://segmentfault.com/a/1190000008227211
+
+# MongoDB
+
+## 什么是MongoDB
+MongoDB是一个文档数据库，提供好的性能，领先的非关系型数据库。采用BSON存储文档数据。
+BSON（）是一种类json的一种二进制形式的存储格式，简称Binary JSON.
+相对于json多了date类型和二进制数组。
+ 
+## MongoDB的优势有哪些
+- 面向文档的存储：以 JSON 格式的文档保存数据。
+- 任何属性都可以建立索引。
+- 复制以及高可扩展性。
+- 自动分片。
+- 丰富的查询功能。
+- 快速的即时更新。
 
 # 缓存
 ## 缓存容易出现的问题

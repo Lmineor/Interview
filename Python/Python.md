@@ -726,3 +726,38 @@ What is the difference between range and xrange functions in Python 2.X?
  xrange is a sequence object that evaluates lazily.
 
 http://stackoverflow.com/questions/94935/what-is-the-difference-between-range-and-xrange-functions-in-python-2-x
+
+## 31 Python Web
+### Nginx、WSGI、 uWSGI、 uwsgi的区别
+
+#### WSGI
+全称是Web Server Gateway Interface，WSGI不是服务器、python模块、框架、API或者任何软件，只是一种**规范**，描述web server如何与web application通信的规范。它是 Python 语言定义出来的 Web 服务器和 Web 应用程序之间的简单而通用的接口，基于现存的 CGI 标准设计，后来在很多其他语言中也出现了类似的接口。 
+
+按照 web 组件分类，WSGI 内部可以分为三类：
+- web 应用程序
+- web 服务器
+- web 中间件。
+
+**web 应用程序端**的部分通过Python 语言的各种 Web 框架实现，比如 Flask，Django这些，有了框架，开发者就不需要处理 WSGI，框架会帮忙解决这些，开发者只需处理 HTTP 请求和响应。
+**web 服务器**的部分就要复杂一点，可以通过 uWSGI 实现，也可以用最常见的 Web 服务器，比如 Apache、Nginx，但这些 Web 服务器没有内置 WSGI 的实现，是通过扩展完成的。如 Apache，通过扩展模块 mod_wsgi 来支持WSGI，Nginx可以通过代理的方式，将请求封装好，交给应用服务器，比如 uWSGI。uWSGI 可以完成 WSGI 的服务端，进程管理以及对应用的调用。
+**WSGI 中间件**的部分可以这样理解：我们把 WSGI 看做桥，这个桥有两个桥墩，一个是应用程序端，另一个是服务器端，那么桥面就是 WSGI 中间件，中间件同时具备服务器、应用程序端两个角色，当然也需要同时遵守 WSGI 服务器和 WSGI 应用程序两边的限制和需要。
+
+#### uwsgi 和 uWSGI
+> uWSGI 是一个 Web 服务器程序；
+
+> WSGI，上面已经谈到，是一种协议；
+
+> uwsgi 也是一种协议，uWSGI 实现了 uwsgi、WSGI、http 等协议。 
+
+*uwsgi 的介绍可以看这里：uwsgi 是 uWSGI 使用的一个自有的协议，它用4个字节来定义传输数据类型描述。尽管都是协议，uwsgi 和 WSGI 并没有联系，我们需要区分这两个词。*
+
+#### Nginx
+Nginx 是高效的 Web 服务器和反向代理服务器，可以用作负载均衡（当有 n 个用户访问服务器时，可以实现分流，分担服务器的压力），与 Apache 相比，Nginx 支持高并发，可以支持百万级的 TCP 连接，十万级别的并发连接，部署简单，内存消耗少，成本低，但 Nginx 的模块没有 Apache 丰富。Nginx 支持 uWSGI 的 uwsgi 协议，因此我们可以将 Nginx 与 uWSGI 结合起来，Nginx 通过 uwsgi_pass 将动态内容交给 uWSGI 处理。
+
+#### uWSGI 和 Nginx 的关系
+
+从上面的讲解中，我们知道，uWSGI 可以起到 Web 服务器的作用，那么为什么有了 uWSGI 还需要 Nginx 呢？
+最普遍的说法是 Nginx 对于处理静态文件更有优势，性能更好。其实如果是小网站，没有静态文件需要处理，只用 uWSGI 也是可以的，但加上 Nginx 这一层，优势可以很具体：
+1. 对于运维来说比较方便，如果服务器被某个 IP 攻击，在 Nginx 配置文件黑名单中添加这个 IP 即可，如果只用 uWSGI，那么就需要在代码中修改了。另一方面，Nginx 是身经百战的 Web 服务器了，在表现上 uWSGI 显得更专业，比如说 uWSGI 在早期版本里是不支持 https 的，可以说 Nginx 更安全。
+2. Nginx 的特点是能够做负载均衡和 HTTP 缓存，如果不止一台服务器，Nginx 基本就是必选项了，通过 Nginx，将资源可以分配给不同的服务器节点，只有一台服务器，也能很好地提高性能，因为 Nginx 可以通过 headers 的Expires or E-Tag，gzip 压缩等方式很好地处理静态资源，毕竟是 C 语言写的，调用的是 native 的函数，针对 I/O做了优化，对于动态资源来说，Nginx 还可以实现缓存的功能，配合 CDN 优化（这是 uWSGI 做不到的）。Nginx 支持epoll/kqueue 等高效网络库，能够很好地处理高并发短连接请求，性能比 uWSGI 不知道高到哪里去了。
+3. 如果服务器主机上运行了PHP，Python 等语言写的多个应用，都需要监听80端口，这时候 Nginx 就是必选项了。因为我们需要一个转发的服务。
