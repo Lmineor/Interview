@@ -146,3 +146,11 @@ https://blog.csdn.net/ctwctw/article/details/105013817
 6. **no-enviction**：禁止驱逐数据，也就是当内存不足以容纳新入数据时，新写入操作就会报错，请求可以继续进行，线上任务也不能持续进行，采用no-enviction策略可以保证数据不被丢失，这也是系统默认的一种淘汰策略。
 [Ref](https://stor.51cto.com/art/201904/594773.htm)
 7. Redis 4.0 加入了 `LFU`（least frequency use）淘汰策略，包括 **volatile-lfu** 和 **allkeys-lfu**，通过统计访问频率，将访问频率最少，即最不经常使用的 KV 淘汰。
+
+## Redis部署
+- redis单例
+- 主从模式
+- sentinel
+- 集群
+
+详见：https://cloud.tencent.com/developer/article/1440480
