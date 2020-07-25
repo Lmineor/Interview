@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Redis 专题](#redis-%E4%B8%93%E9%A2%98)
+  - [0 Redis是什么？](#0-redis%E6%98%AF%E4%BB%80%E4%B9%88)
+    - [Redis数据库](#redis%E6%95%B0%E6%8D%AE%E5%BA%93)
+    - [Redis优点](#redis%E4%BC%98%E7%82%B9)
+    - [Redis缺点](#redis%E7%BC%BA%E7%82%B9)
+  - [1 五种数据类型](#1-%E4%BA%94%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
+    - [数据类型应用场景总结：](#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%80%BB%E7%BB%93)
+  - [2 Redis 持久化](#2-redis-%E6%8C%81%E4%B9%85%E5%8C%96)
+    - [RDB 是怎么工作的](#rdb-%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84)
+    - [AOF 是怎么工作的](#aof-%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84)
+    - [AOF和RDB选择](#aof%E5%92%8Crdb%E9%80%89%E6%8B%A9)
+    - [redis的持久化开启了RDB和AOF下重启服务是如何加载的](#redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E5%BC%80%E5%90%AF%E4%BA%86rdb%E5%92%8Caof%E4%B8%8B%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E7%9A%84)
+  - [3 Redis 应用](#3-redis-%E5%BA%94%E7%94%A8)
+  - [4 Redis为什么这么快](#4-redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%BF%AB)
+  - [5 Redis 和 Memcached 的区别](#5-redis-%E5%92%8C-memcached-%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [6 Redis 的淘汰策略](#6-redis-%E7%9A%84%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5)
+  - [Redis部署](#redis%E9%83%A8%E7%BD%B2)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Redis 专题
 ## 0 Redis是什么？
 
@@ -153,7 +177,7 @@ https://blog.csdn.net/ctwctw/article/details/105013817
 
 7. Redis 4.0 加入了 `LFU`（least frequency use）淘汰策略，包括 **volatile-lfu** 和 **allkeys-lfu**，通过统计访问频率，将访问频率最少，即最不经常使用的 KV 淘汰。
 
-## Redis部署
+## 7 Redis部署
 - redis单例
 - 主从模式
 - sentinel

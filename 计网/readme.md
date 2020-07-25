@@ -1,3 +1,58 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [OSI（开放系统互连参考模型）7层](#osi%E5%BC%80%E6%94%BE%E7%B3%BB%E7%BB%9F%E4%BA%92%E8%BF%9E%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B7%E5%B1%82)
+  - [说明](#%E8%AF%B4%E6%98%8E)
+  - [TCP](#tcp)
+    - [0 使用TCP协议](#0-%E4%BD%BF%E7%94%A8tcp%E5%8D%8F%E8%AE%AE)
+    - [1 TCP三次握手](#1-tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B)
+      - [握手🤝为什么需要三次呢，如果把最后一次的去掉改为两次握手🤝是否可行呢?](#%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E5%91%A2%E5%A6%82%E6%9E%9C%E6%8A%8A%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E7%9A%84%E5%8E%BB%E6%8E%89%E6%94%B9%E4%B8%BA%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A1%8C%E5%91%A2)
+    - [2 TCP四次挥手](#2-tcp%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
+      - [为什么断开连接需要四次挥手👋呢，像建立连接的时候一样，三次行不行呢？](#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%91%A2%E5%83%8F%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%80%E6%A0%B7%E4%B8%89%E6%AC%A1%E8%A1%8C%E4%B8%8D%E8%A1%8C%E5%91%A2)
+    - [TCP可靠传输](#tcp%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+    - [TCP流量控制](#tcp%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6)
+      - [常见的 TCP 拥塞控制算法](#%E5%B8%B8%E8%A7%81%E7%9A%84-tcp-%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95)
+  - [UDP](#udp)
+    - [使用UDP协议端口常见的有：](#%E4%BD%BF%E7%94%A8udp%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9C%89)
+  - [UDP与TCP区别](#udp%E4%B8%8Etcp%E5%8C%BA%E5%88%AB)
+  - [3 ARP协议](#3-arp%E5%8D%8F%E8%AE%AE)
+  - [4 urllib和urllib2的区别](#4-urllib%E5%92%8Curllib2%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [5 Post和Get](#5-post%E5%92%8Cget)
+  - [6 Cookie和Session](#6-cookie%E5%92%8Csession)
+  - [7 apache和nginx的区别](#7-apache%E5%92%8Cnginx%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [8 网站用户密码保存](#8-%E7%BD%91%E7%AB%99%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E4%BF%9D%E5%AD%98)
+  - [9 HTTP和HTTPS](#9-http%E5%92%8Chttps)
+    - [状态码](#%E7%8A%B6%E6%80%81%E7%A0%81)
+    - [状态码详解](#%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3)
+    - [HTTP](#http)
+      - [HTTP优化方案：](#http%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88)
+      - [HTTP1.0 HTTP 1.1主要区别](#http10-http-11%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB)
+      - [URI和URL](#uri%E5%92%8Curl)
+        - [关系](#%E5%85%B3%E7%B3%BB)
+        - [有什么区别](#%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+      - [什么是Http协议无状态协议?怎么解决Http协议无状态协议?](#%E4%BB%80%E4%B9%88%E6%98%AFhttp%E5%8D%8F%E8%AE%AE%E6%97%A0%E7%8A%B6%E6%80%81%E5%8D%8F%E8%AE%AE%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3http%E5%8D%8F%E8%AE%AE%E6%97%A0%E7%8A%B6%E6%80%81%E5%8D%8F%E8%AE%AE)
+    - [HTTP与HTTPS的区别：](#http%E4%B8%8Ehttps%E7%9A%84%E5%8C%BA%E5%88%AB)
+    - [HTTPS](#https)
+    - [HTTPS在传输的过程中会涉及到三个密钥](#https%E5%9C%A8%E4%BC%A0%E8%BE%93%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BC%9A%E6%B6%89%E5%8F%8A%E5%88%B0%E4%B8%89%E4%B8%AA%E5%AF%86%E9%92%A5)
+  - [10 XSRF和XSS](#10-xsrf%E5%92%8Cxss)
+  - [11 幂等 Idempotence](#11-%E5%B9%82%E7%AD%89-idempotence)
+  - [12 RESTful架构(SOAP,RPC)](#12-restful%E6%9E%B6%E6%9E%84soaprpc)
+  - [13 SOAP](#13-soap)
+  - [14 RPC](#14-rpc)
+  - [15 CGI和WSGI](#15-cgi%E5%92%8Cwsgi)
+  - [16 中间人攻击](#16-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB)
+  - [17 c10k问题](#17-c10k%E9%97%AE%E9%A2%98)
+  - [18 socket](#18-socket)
+  - [19 浏览器缓存](#19-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98)
+  - [20 HTTP1.0和HTTP1.1](#20-http10%E5%92%8Chttp11)
+  - [21 Ajax](#21-ajax)
+  - [22 Nginx](#22-nginx)
+    - [Nginx支持的负载均衡调度算法](#nginx%E6%94%AF%E6%8C%81%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95)
+  - [23 从输入网址到获得页面的网络请求的过程](#23-%E4%BB%8E%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%88%B0%E8%8E%B7%E5%BE%97%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # OSI（开放系统互连参考模型）7层
 
 ## 说明

@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [计算机原理及其他相关内容](#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9)
+  - [什么是内存对齐？为什么要内存对齐？](#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+    - [什么是内存对齐](#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+    - [为什么要内存对齐？](#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+  - [堆区（heap）和栈区（stack）的区别](#%E5%A0%86%E5%8C%BAheap%E5%92%8C%E6%A0%88%E5%8C%BAstack%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [restful规范](#restful%E8%A7%84%E8%8C%83)
+    - [RESTful6大原则](#restful6%E5%A4%A7%E5%8E%9F%E5%88%99)
+    - [restful规范的认识](#restful%E8%A7%84%E8%8C%83%E7%9A%84%E8%AE%A4%E8%AF%86)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 计算机原理及其他相关内容
 
 ## 什么是内存对齐？为什么要内存对齐？
@@ -116,4 +131,3 @@ ret = {
     }
 }
 ```
-

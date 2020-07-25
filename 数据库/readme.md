@@ -1,3 +1,39 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [基础](#%E5%9F%BA%E7%A1%80)
+  - [0 数据库设计范式](#0-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F)
+  - [1 事务](#1-%E4%BA%8B%E5%8A%A1)
+  - [2 数据库索引](#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95)
+  - [3 Redis相关](#3-redis%E7%9B%B8%E5%85%B3)
+  - [4 乐观锁和悲观锁](#4-%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81)
+    - [两种锁的使用场景](#%E4%B8%A4%E7%A7%8D%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
+  - [5 MVCC](#5-mvcc)
+    - [MySQL的innodb引擎是如何实现MVCC的](#mysql%E7%9A%84innodb%E5%BC%95%E6%93%8E%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0mvcc%E7%9A%84)
+  - [6 MyISAM和InnoDB](#6-myisam%E5%92%8Cinnodb)
+- [MongoDB](#mongodb)
+  - [什么是MongoDB](#%E4%BB%80%E4%B9%88%E6%98%AFmongodb)
+  - [MongoDB的优势有哪些](#mongodb%E7%9A%84%E4%BC%98%E5%8A%BF%E6%9C%89%E5%93%AA%E4%BA%9B)
+- [MySQL、Redis、MongoDB对比](#mysqlredismongodb%E5%AF%B9%E6%AF%94)
+  - [MySQL](#mysql)
+  - [Redis](#redis)
+  - [MongoDB](#mongodb-1)
+  - [使用场景的不同](#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E7%9A%84%E4%B8%8D%E5%90%8C)
+    - [MongoDB适用于](#mongodb%E9%80%82%E7%94%A8%E4%BA%8E)
+    - [mysql还是更加适用于](#mysql%E8%BF%98%E6%98%AF%E6%9B%B4%E5%8A%A0%E9%80%82%E7%94%A8%E4%BA%8E)
+    - [Redis应用场景](#redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF)
+- [缓存](#%E7%BC%93%E5%AD%98)
+  - [缓存容易出现的问题](#%E7%BC%93%E5%AD%98%E5%AE%B9%E6%98%93%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98)
+  - [雪崩](#%E9%9B%AA%E5%B4%A9)
+    - [解决](#%E8%A7%A3%E5%86%B3)
+  - [缓存穿透](#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F)
+    - [解决](#%E8%A7%A3%E5%86%B3-1)
+  - [缓存击穿](#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF)
+    - [解决](#%E8%A7%A3%E5%86%B3-2)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 基础
 
 ## 0 数据库设计范式
@@ -97,8 +133,11 @@ InnoDB 的趋势会是一个非常复杂的存储引擎，对于一些小的应�
 user like '%lee%'
 
 
-mysql 数据库引擎: http://www.cnblogs.com/0201zcr/p/5296843.html
-MySQL存储引擎－－MyISAM与InnoDB区别: https://segmentfault.com/a/1190000008227211
+mysql 数据库引擎: 
+http://www.cnblogs.com/0201zcr/p/5296843.html
+
+MySQL存储引擎－－MyISAM与InnoDB区别: 
+https://segmentfault.com/a/1190000008227211
 
 # MongoDB
 
@@ -108,12 +147,81 @@ BSON（）是一种类json的一种二进制形式的存储格式，简称Binary
 相对于json多了date类型和二进制数组。
  
 ## MongoDB的优势有哪些
+
 - 面向文档的存储：以 JSON 格式的文档保存数据。
 - 任何属性都可以建立索引。
 - 复制以及高可扩展性。
 - 自动分片。
 - 丰富的查询功能。
 - 快速的即时更新。
+
+
+
+# MySQL、Redis、MongoDB对比
+
+## MySQL
+
+1. 使用c和c++编写，并使用了多种编译器进行测试，保证源代码的可移植性
+2. 支持多种操作系统
+3. 为多种编程语言提供API
+4. 支持多线程，充分利用CPU资源、优化的SQL查询算法，有效的提高查询速度
+5. 提供多语言支持，常见的编码如：GB2312、BIG5、UTF8
+6. 提供TCP/IP、ODBC和JDBC等多种数据库连接途径、供用于管理、检查、优化数据库操作的管理工具
+7. 大型的数据库。可以处理拥有上千万条记录的大型数据库
+8.支持多种存储引擎
+9. MySQL软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择MySQL作为网站数据库
+10. MySQL使用标准的SQL数据语言形式
+11. Mysql是可以定制的，采用GPL协议，你可以修改源码来开发自己的MySQL系统
+12. 在线DDL更改功能
+13. 全局事务标识
+14. 无崩溃从机
+15. 多线程从机
+
+## Redis
+
+1. Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+2. Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，在set，hash等数据结构的存储。
+3. Redis支持数据的备份，即master-slave模式（主仆模式）的数据备份
+4. 性能极高- Redis能读的速度是110000次/s，写的速度是81000次/s
+5. 丰富的数据类型-Redis支持二进制案例的Strings,Lists,Hashes,Sets及Ordered Sets数据类型操作。
+6. 原子 - Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行。
+7. 丰富的特性 - Redis还支持publish/subscribe,通知，key过期等等特性。 
+
+## MongoDB
+
+1. 模式自由：可以把不同结构的文档存储在同一个数据库里
+2. 面向集合的存储：适合存储JSON风格文件的形式
+3. 完整的索引支持，对任何属性可索引
+4. 复制和高可用性：支持服务器之间的数据复制，支持主-从模式及服务器之间的相互复制。复制的主要目的是提供冗余及自动故障转移
+5. 自动分片：支持水平的数据库集群，可动态添加额外的机器
+6. 丰富的查询：支持丰富的查询表达方式，查询指令使用JSON形式的标记，可轻易查询文档中的内嵌的对象及数组
+7. 快速就地更新：查询优化器会分析查询表达式，并生成一个高效的查询计划
+8. 高效的传统存储方式：支持二进制数据及大型对象
+
+## 使用场景的不同
+
+### MongoDB适用于
+
+①网站数据：适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性；
+②缓存：由于性能很高，也适合作为信息基础设施的缓存层，在系统重启之后，搭建的持久化缓存可以避免下层的数据源过载；
+③大尺寸、低价值的数据也是MongoDB的最佳选择，使用传统的关系数据库存储一些数据时可能会比较贵，在此之前很多程序员往往会选择传统的文件进行存储
+④高伸缩的场景，非常适合由数十或者数百台服务器组成的数据库
+⑤用于对象及json数据的存储，MongoDB的bson数据格式非常适合文档格式化的存储及查询。
+
+### mysql还是更加适用于
+
+①高度事务性的系统。例如银行或者会计系统，传统的关系型数据库目前还是更实用于需要大量原子性复杂事务的应用程序
+②传统的商业智能应用，针对特定问题的BI数据库会对产生高度优化的查询方式，对于此类应用，数据仓库可能是更合适的选择
+
+### Redis应用场景
+
+1. 用来做缓存-redis的所有数据是放在内存中的
+2. 可以在某些特定应用场景下替代传统数据库--比如社交类的应用
+3. 在一些大型系统中，巧妙的实现一些特定的功能：session共享、购物车
+4. MongoDB不支持SQL语句
+
+
+
 
 # 缓存
 ## 缓存容易出现的问题
