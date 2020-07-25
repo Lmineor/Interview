@@ -18,16 +18,16 @@
 
 详见
 
-[Python](./Python/README.md)
+[Python](./Python/readme.md)
 
 ## OS
 
-[OS](./OS/README.md)
+[OS](./OS/readme.md)
 
 ## 数据结构
 
-[Algorithm](./Algorithm/README.md)
+[Algorithm](./Algorithm/readme.md)
 
 ## 其他部分
 
-[其他](./其他/README.md)
+[其他](./其他/readme.md)
