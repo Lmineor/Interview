@@ -22,6 +22,7 @@
 ## 1 五种数据类型
 
 但是在说之前，我觉得有必要先来了解下 Redis 内部内存管理是如何描述这 5 种数据类型的。
+
 ![类型示意](../src/redis.jpg)
 
 首先 Redis 内部使用一个 `redisObject` 对象来表示所有的 `key` 和 `value`。
@@ -80,10 +81,12 @@ String 类型是二进制安全的，意思是 Redis 的 String 类型可以包�
 ### AOF 是怎么工作的
 
 使用 AOF 做持久化，每一个写命令都通过 write 函数追加到 appendonly.aof 中，配置方式如下：
+
 ```shell
 appendfsyncyesappendfsync always    #每次有数据修改发生时都会写入AOF文件。
 appendfsync everysec                #每秒钟同步一次，该策略为AOF的缺省策略。
 ```
+
 AOF 可以做到全程持久化，只需要在配置中开启 appendonly yes。这样 Redis 每执行一个修改数据的命令，都会把它添加到 AOF 文件中，当 Redis 重启时，将会读取 AOF 文件进行重放，恢复到 Redis 关闭前的最后时刻。
 - 优点是会让 Redis 变得非常耐久。可以设置不同的 Fsync 策略，AOF的默认策略是每秒钟 Fsync 一次，在这种配置下，就算发生故障停机，也最多丢失一秒钟的数据。
 - 缺点是对于相同的数据集来说，AOF 的文件体积通常要大于 RDB 文件的体积。根据所使用的 Fsync 策略，AOF 的速度可能会慢于 RDB。
@@ -105,6 +108,7 @@ AOF 可以做到全程持久化，只需要在配置中开启 appendonly yes。�
 **bitmap** 简介及相关应用
 1 统计某用户登录天数
 2 查看活跃用户总数
+
 https://blog.csdn.net/ctwctw/article/details/105013817
 
 ## 4 Redis为什么这么快
@@ -144,7 +148,9 @@ https://blog.csdn.net/ctwctw/article/details/105013817
 5. **allkeys-random**：从数据集(`server.db[i].dict`)中选择任意数据淘汰。
 
 6. **no-enviction**：禁止驱逐数据，也就是当内存不足以容纳新入数据时，新写入操作就会报错，请求可以继续进行，线上任务也不能持续进行，采用no-enviction策略可以保证数据不被丢失，这也是系统默认的一种淘汰策略。
+
 [Ref](https://stor.51cto.com/art/201904/594773.htm)
+
 7. Redis 4.0 加入了 `LFU`（least frequency use）淘汰策略，包括 **volatile-lfu** 和 **allkeys-lfu**，通过统计访问频率，将访问频率最少，即最不经常使用的 KV 淘汰。
 
 ## Redis部署
