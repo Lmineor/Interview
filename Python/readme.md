@@ -76,7 +76,7 @@ a = []
 def fun(a):
     a.append(1)
 fun(a)
-print a  # [1]
+print(a)  # [1]
 ```
 
 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。
@@ -86,12 +86,12 @@ print a  # [1]
 ```python
 a = 1
 def fun(a):
-    print "func_in",id(a)   # func_in 41322472
+    print("func_in",id(a))   # func_in 41322472
     a = 2
-    print "re-point",id(a), id(2)   # re-point 41322448 41322448
-print "func_out",id(a), id(1)  # func_out 41322472 41322472
+    print("re-point",id(a), id(2))   # re-point 41322448 41322448
+print("func_out",id(a), id(1))  # func_out 41322472 41322472
 fun(a)
-print a  # 1
+print(a)  # 1
 ```
 
 注：具体的值在不同电脑上运行时可能不同。
@@ -103,11 +103,11 @@ print a  # 1
 ```python
 a = []
 def fun(a):
-    print "func_in",id(a)  # func_in 53629256
+    print("func_in",id(a))  # func_in 53629256
     a.append(1)
-print "func_out",id(a)     # func_out 53629256
+print("func_out",id(a))     # func_out 53629256
 fun(a)
-print a  # [1]
+print(a)  # [1]
 ```
 
 这里记住的是类型是属于对象的，而不是变量。而对象有两种,“可更改”（mutable）与“不可更改”（immutable）对象。在python中，strings, tuples, 和numbers是不可更改的对象，而 list, dict, set 等则是可以修改的对象。(这就是这个问题的重点)
@@ -126,19 +126,19 @@ Python其实有3个方法,即静态方法(staticmethod),类方法(classmethod)�
 
 ```python
 def foo(x):
-    print "executing foo(%s)"%(x)
+    print("executing foo(%s)"%(x))
 
 class A(object):
     def foo(self,x):
-        print "executing foo(%s,%s)"%(self,x)
+        print("executing foo(%s,%s)"%(self,x))
 
     @classmethod
     def class_foo(cls,x):
-        print "executing class_foo(%s,%s)"%(cls,x)
+        print("executing class_foo(%s,%s)"%(cls,x))
 
     @staticmethod
     def static_foo(x):
-        print "executing static_foo(%s)"%x
+        print("executing static_foo(%s)"%x)
 
 a=A()
 
@@ -174,12 +174,12 @@ class Test(object):
         Test.num_of_instance += 1  
   
 if __name__ == '__main__':  
-    print Test.num_of_instance   # 0
+    print(Test.num_of_instance)   # 0
     t1 = Test('jack')  
-    print Test.num_of_instance   # 1
+    print(Test.num_of_instance)  # 1
     t2 = Test('lucy')  
-    print t1.name , t1.num_of_instance  # jack 2
-    print t2.name , t2.num_of_instance  # lucy 2
+    print(t1.name , t1.num_of_instance)  # jack 2
+    print(t2.name , t2.num_of_instance)  # lucy 2
 ```
 
 > 补充的例子
@@ -191,9 +191,9 @@ class Person:
 p1=Person()
 p2=Person()
 p1.name="bbb"
-print p1.name  # bbb
-print p2.name  # aaa
-print Person.name  # aaa
+print(p1.name)  # bbb
+print(p2.name)  # aaa
+print(Person.name)  # aaa
 ```
 
 这里`p1.name="bbb"`是实例调用了类变量,这其实和上面第一个问题一样,就是函数传参的问题,`p1.name`一开始是指向的类变量`name="aaa"`,但是在实例的作用域里把类变量的引用改变了,就变成了一个实例变量,self.name不再引用Person的类变量name了.
@@ -207,14 +207,16 @@ class Person:
 p1=Person()
 p2=Person()
 p1.name.append(1)
-print p1.name  # [1]
-print p2.name  # [1]
-print Person.name  # [1]
+print(p1.name)  # [1]
+print(p2.name)  # [1]
+print(Person.name)  # [1]
 ```
 
 参考:http://stackoverflow.com/questions/6470428/catch-multiple-exceptions-in-one-line-except-block
 
-## 5 Python自省
+## 5 Python自省与反射
+
+### 自省
 
 这个也是python彪悍的特性.
 
@@ -224,11 +226,13 @@ print Person.name  # [1]
 a = [1,2,3]
 b = {'a':1,'b':2,'c':3}
 c = True
-print type(a),type(b),type(c) # <type 'list'> <type 'dict'> <type 'bool'>
-print isinstance(a,list)  # True
+print(type(a),type(b),type(c)) # <type 'list'> <type 'dict'> <type 'bool'>
+print(isinstance(a,list))  # True
 ```
 
+### 反射
 
+反射机制就是在运行时，动态的确定对象的类型，并可以通过字符串调用对象属性、方法、导入模块，是一种基于字符串的事件驱动
 
 ## 6 字典推导式
 
@@ -247,13 +251,13 @@ d = {key: value for (key, value) in iterable}
 ...             self._semiprivate = ", world!"
 ...
 >>> mc = MyClass()
->>> print mc.__superprivate
+>>> print(mc.__superprivate)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: myClass instance has no attribute '__superprivate'
->>> print mc._semiprivate
+>>> print(mc._semiprivate)
 , world!
->>> print mc.__dict__
+>>> print(mc.__dict__)
 {'_MyClass__superprivate': 'Hello', '_semiprivate': ', world!'}
 ```
 
@@ -275,13 +279,13 @@ AttributeError: myClass instance has no attribute '__superprivate'
 "hi there %s" % name
 ```
 
-但是,如果name恰好是(1,2,3),它将会抛出一个TypeError异常.为了保证它总是正确的,你必须这样做:
+但是,如果`name`恰好是`(1,2,3)`,它将会抛出一个TypeError异常.为了保证它总是正确的,你必须这样做:
 
 ```
 "hi there %s" % (name,)   # 提供一个单元素的数组而不是一个参数
 ```
 
-但是有点丑..format就没有这些问题.你给的第二个问题也是这样,.format好看多了.
+但是有点丑`.format`就没有这些问题.你给的第二个问题也是这样,`.format`好看多了.
 
 你为什么不用它?
 
@@ -292,6 +296,7 @@ http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
 
 ## 9 迭代器和生成器
 
+### 生成器
 这个是stackoverflow里python排名第一的问题,值得一看: http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python
 
 这是中文版: http://taizilongxu.gitbooks.io/stackoverflow-about-python/content/1/README.html
@@ -306,9 +311,35 @@ http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 >>> g = (x*x for x in range(10))
 >>> g
-<generator object <genexpr> at 0x0000028F8B774200>
+<generator object <genexpr> at 0x03A33840>
+>>> next(g)
+0
+>>> next(g)
+1
+>>> next(g)
+4
 ```
-通过列表生成式，可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含百万元素的列表，不仅是占用很大的内存空间，如：我们只需要访问前面的几个元素，后面大部分元素所占的空间都是浪费的。因此，没有必要创建完整的列表（节省大量内存空间）。在Python中，我们可以采用生成器：边循环，边计算的机制—>generator
+通过列表生成式，可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含百万元素的列表，不仅是占用很大的内存空间，如：我们只需要访问前面的几个元素，后面大部分元素所占的空间都是浪费的。因此，没有必要创建完整的列表（节省大量内存空间）。在Python中，我们可以采用生成器：边循环，边计算`next`的机制—>generator
+
+```py
+# 斐波那契数列
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield a
+        a, b = b, a+b
+        n = n + 1
+    return 'Done'
+
+fi = fib(10)
+try:
+    for i in range(15):
+        print(next(fi))
+except StopIteration:
+    pass
+```
+
+### 迭代器
 
 ## 10 `*args` and `**kwargs`
 
@@ -319,7 +350,7 @@ http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
 ```python
 >>> def print_everything(*args):
         for count, thing in enumerate(args):
-...         print '{0}. {1}'.format(count, thing)
+...         print('{0}. {1}'.format(count, thing))
 ...
 >>> print_everything('apple', 'banana', 'cabbage')
 0. apple
@@ -332,7 +363,7 @@ http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
 ```python
 >>> def table_things(**kwargs):
 ...     for name, value in kwargs.items():
-...         print '{0} = {1}'.format(name, value)
+...         print('{0} = {1}'.format(name, value))
 ...
 >>> table_things(apple = 'fruit', cabbage = 'vegetable')
 cabbage = vegetable
@@ -351,7 +382,7 @@ def table_things(titlestring, **kwargs)
 
 ```python
 >>> def print_three_things(a, b, c):
-...     print 'a = {0}, b = {1}, c = {2}'.format(a,b,c)
+...     print('a = {0}, b = {1}, c = {2}'.format(a,b,c))
 ...
 >>> mylist = ['aardvark', 'baboon', 'cat']
 >>> print_three_things(*mylist)
@@ -365,10 +396,27 @@ http://stackoverflow.com/questions/3394835/args-and-kwargs
 
 ## 11 面向切面编程AOP和装饰器
 
-这个AOP一听起来有点懵,同学面阿里的时候就被问懵了...
-
 装饰器是一个很著名的设计模式，经常被用于有切面需求的场景，较为经典的有插入日志、性能测试、事务处理等。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量函数中与函数功能本身无关的雷同代码并继续重用。概括的讲，**装饰器的作用就是为已经存在的对象添加额外的功能。**
-
+```py
+from time import ctime, sleep
+def timefun(func):
+    def wrappedfunc():
+        print("%s called at %s"%(func.__name__, ctime()))
+        return func()
+    return wrappedfunc
+@timefun
+def foo():
+    print("I am foo")
+foo()
+sleep(2)
+foo()
+"""
+foo called at Sat Jul 25 20:06:32 2020
+I am foo
+foo called at Sat Jul 25 20:06:34 2020
+I am foo
+"""
+```
 这个问题比较大,推荐: http://stackoverflow.com/questions/739654/how-can-i-make-a-chain-of-function-decorators-in-python
 
 中文: http://taizilongxu.gitbooks.io/stackoverflow-about-python/content/3/README.html
@@ -400,7 +448,7 @@ http://stackoverflow.com/questions/3394835/args-and-kwargs
 
 那么对于情况 2 ，函数功能相同，但参数个数不同，python 如何处理？大家知道，答案就是缺省参数。对那些缺少的参数设定为缺省参数即可解决问题。因为你假设函数功能相同，那么那些缺少的参数终归是需要用的。
 
-好了，鉴于情况 1 跟 情况 2 都有了解决方案，python 自然就不需要函数重载了。
+好了，鉴于情况 1 跟 情况 2 都有了解决方案，**python 自然就不需要函数重载了**。
 
 ## 14 新式类和旧式类
 
@@ -417,13 +465,13 @@ http://stackoverflow.com/questions/3394835/args-and-kwargs
 ```python
 class A():
     def foo1(self):
-        print "A"
+        print("A")
 class B(A):
     def foo2(self):
         pass
 class C(A):
     def foo1(self):
-        print "C"
+        print("C")
 class D(B, C):
     pass
 
@@ -439,8 +487,24 @@ d.foo1()
 
 ## 15 `__new__`和`__init__`的区别
 
-这个`__new__`确实很少见到,先做了解吧.
+```py
+class TestClass(object):
+    def __new__(cls, *args, **kwargs):
+        print("__new__")
+        return object.__new__(cls)
 
+    def __init__(self, name):
+        print("__init__")
+        self.name = name
+
+tc = TestClass('TC')
+print(tc.name)
+"""
+__new__
+__init__
+TC
+"""
+```
 1. `__new__`是一个静态方法,而`__init__`是一个实例方法.
 2. `__new__`方法会返回一个创建的实例,而`__init__`什么都不返回.
 3. 只有在`__new__`返回一个cls的实例时后面的`__init__`才能被调用.
@@ -528,14 +592,14 @@ my_singleton.foo()
 import threading
 class Singleton(object):
     _instance_lock = threading.Lock()
-	def __init__(self):
+    def __init__(self):
         pass
-	def __new__(cls, *args, **kwargs):
-    if not hasattr(Singleton, "_instance"):
-        with Singleton._instance_lock:
-            if not hasattr(Singleton, "_instance"):
-                Singleton._instance = object.__new__(cls)  
-    return Singleton._instance
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(Singleton, "_instance"):
+            with Singleton._instance_lock:
+                if not hasattr(Singleton, "_instance"):
+                    Singleton._instance = object.__new__(cls)
+        return Singleton._instance
 obj1 = Singleton()
 obj2 = Singleton()
 print(obj1,obj2)
@@ -575,7 +639,50 @@ Python 中，一个变量的作用域总是由在代码中被赋值的地方所�
 
 ## 18 GIL线程全局锁
 
+### 先说下python解释器
+
+**解释器**是能够执行用其他计算机语言编写的程序的系统软件，它是一种翻译程序。它的执行方式是一边翻译一边执行，因此其执行效率一般偏低，但是解释器的实现较为简单，而且编写源程序的高级语言可以使用更加灵活和富于表现力的语法。
+
+**解释器**由一个**编译器**和一个**虚拟机**构成，编译器负责将源代码转换成**字节码**文件，而虚拟机负责执行字节码。
+所以，解释型语言其实也有编译过程，只不过这个编译过程并不是直接生成目标代码，而是中间代码（字节码），然后再通过虚拟机来逐行解释执行字节码
+
+有很多种python解释器
+
+#### CPython
+当我们从Python官方网站下载并安装好Python 3.x后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。
+
+CPython是使用最广的Python解释器。
+
+#### IPython
+IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了IE。
+
+CPython用>>>作为提示符，而IPython用In [序号]:作为提示符。
+
+#### PyPy
+PyPy是另一个Python解释器，它的目标是执行速度。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。
+
+绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到PyPy下执行，就需要了解PyPy和CPython的不同点。
+
+#### Jython
+Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。
+
+#### IronPython
+IronPython和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。
+
+#### 小结
+Python的解释器很多，但使用最广泛的还是CPython。如果要和Java或.Net平台交互，最好的办法不是用Jython或IronPython，而是通过网络调用来交互，确保各程序之间的独立性。
+
+参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1016966024263840
+
+### 线程全局锁
+
+官方解释：
+
+> In CPython, the global interpreter lock, or GIL, is a mutex that prevents multiple native threads from executing Python bytecodes at once. This lock is necessary mainly because CPython’s memory management is not thread-safe. (However, since the GIL exists, other features have grown to depend on the guarantees that it enforces.)
+
 线程全局锁(Global Interpreter Lock),即Python为了保证线程安全而采取的独立线程运行的限制,说白了就是一个核只能在同一时间运行一个线程.**对于io密集型任务，python的多线程起到作用，但对于cpu密集型任务，python的多线程几乎占不到任何优势，还有可能因为争夺资源而变慢。**
+
+需要明确的一点是**GIL并不是Python的特性**，它是在实现Python解析器(**CPython**)时所引入的一个概念。
 
 见[Python 最难的问题](http://www.oschina.net/translate/pythons-hardest-problem)
 
@@ -592,6 +699,7 @@ Python里最常见的yield就是协程的思想!可以查看第九个问题.
 
 ## 20 闭包
 
+好难╯︿╰ https://www.cnblogs.com/yssjun/p/9887239.html
 闭包(closure)是函数式编程的重要的语法结构。闭包也是一种组织代码的结构，它同样提高了代码的可重复使用性。
 
 当一个内嵌函数引用其外部作作用域的变量,我们就会得到一个闭包. 总结一下,创建一个闭包必须满足以下几点:
@@ -626,7 +734,7 @@ filter 函数的功能相当于过滤器。调用一个布尔函数`bool_func`�
 ```python
 >>>a = [1,2,3,4,5,6,7]
 >>>b = filter(lambda x: x > 5, a)
->>>print b
+>>>print(b)
 >>>[6,7]
 ```
 
@@ -653,17 +761,17 @@ reduce函数是对一个序列的每个项迭代调用函数，下面是求3的�
 import copy
 a = [1, 2, 3, 4, ['a', 'b']]  #原始对象
 
-b = a  #赋值，传对象的引用
-c = copy.copy(a)  #对象拷贝，浅拷贝
-d = copy.deepcopy(a)  #对象拷贝，深拷贝
+b = a                       #赋值，传对象的引用
+c = copy.copy(a)            #对象拷贝，浅拷贝
+d = copy.deepcopy(a)        #对象拷贝，深拷贝
 
-a.append(5)  #修改对象a
-a[4].append('c')  #修改对象a中的['a', 'b']数组对象
+a.append(5)                 #修改对象a
+a[4].append('c')            #修改对象a中的['a', 'b']数组对象
 
-print 'a = ', a
-print 'b = ', b
-print 'c = ', c
-print 'd = ', d
+print('a = ', a)
+print('b = ', b)
+print('c = ', c)
+print('d = ', d)
 
 输出结果：
 a =  [1, 2, 3, 4, ['a', 'b', 'c'], 5]
@@ -679,6 +787,15 @@ Python GC主要使用引用计数（reference counting）来跟踪和回收垃�
 ### 1 引用计数
 
 PyObject是每个对象必有的内容，其中`ob_refcnt`就是做为引用计数。当一个对象有新的引用时，它的`ob_refcnt`就会增加，当引用它的对象被删除，它的`ob_refcnt`就会减少.引用计数为0时，该对象生命就结束了。
+
+源码如下
+```c
+typedef struct _object {
+    _PyObject_HEAD_EXTRA // 活跃堆对象的指针信息
+    Py_ssize_t ob_refcnt;
+    struct _typeobject *ob_type;
+} PyObject;
+```
 
 优点:
 
@@ -717,7 +834,7 @@ is是对比地址,==是对比值
 * readline    读取下一行,使用生成器方法
 * readlines   读取整个文件到一个迭代器以供我们遍历
 
-## 28 Python2和3的区别
+## 28 Python2和3的区别(很少问了)
 推荐：[Python 2.7.x 与 Python 3.x 的主要差异](http://chenqx.github.io/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/)
 
 ## 29 super init
@@ -729,16 +846,12 @@ http://stackoverflow.com/questions/576169/understanding-python-super-with-init-m
 
 [Python2.7中的super方法浅见](http://blog.csdn.net/mrlevo520/article/details/51712440)
 
-## 30 range and xrange
-都在循环时使用，xrange内存性能更好。
-for i in range(0, 20):
-for i in xrange(0, 20):
-What is the difference between range and xrange functions in Python 2.X?
- range creates a list, so if you do range(1, 10000000) it creates a list in memory with 9999999 elements.
- xrange is a sequence object that evaluates lazily.
-
-http://stackoverflow.com/questions/94935/what-is-the-difference-between-range-and-xrange-functions-in-python-2-x
-
+## 30 Python 的dict
+python是用hash表实现的dict对象
+C中的描述
+```c
+PyDictKeysObject //实现字典的hash表
+```
 ## 31 Python Web
 ### Nginx、WSGI、 uWSGI、 uwsgi的区别
 
@@ -802,6 +915,29 @@ Python中有分为大内存和小内存：（256K为界限分大小内存）
 
 ### Python的内存池(金字塔)
 - 第3层：最上层，用户对Python对象的直接操作
-- 第1层和第2层：内存池，有Python的接口函数PyMem_Malloc实现-----若请求分配的内存在1~256字节之间就使用内存池管理系统进行分配，调用malloc函数分配内存，但是每次只会分配一块大小为256K的大块内存，不会调用free函数释放内存，将该内存块留在内存池中以便下次使用。
+- 第1层和第2层：内存池，有Python的接口函数PyMem_Malloc实现-----若请求分配的内存在1~256K字节之间就使用内存池管理系统进行分配，调用malloc函数分配内存，但是每次只会分配一块大小为256K的大块内存，不会调用free函数释放内存，将该内存块留在内存池中以便下次使用。
 - 第0层：大内存-----若请求分配的内存大于256K，malloc函数分配内存，free函数释放内存。
 - 第-1，-2层：操作系统进行操作
+
+## 32 Python的序列类型
+**list, tuple, range**
+
+
+### 不可变序列类型
+
+不可变序列类型普遍实现而可变序列类型未实现的唯一操作就是对 hash() 内置函数的支持。
+
+这种支持允许不可变类型，例如 tuple 实例被用作 dict 键，以及存储在 set 和 frozenset 实例中。
+
+尝试对包含有不可哈希值的不可变序列进行哈希运算将会导致 TypeError。
+
+有：
+- tuple
+- range：通常用于在 for 循环中循环指定的次数。
+
+
+### 可变序列类型
+
+顾名思义，该序列是可变的，不支持hash()
+
+list
