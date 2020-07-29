@@ -649,27 +649,33 @@ Python 中，一个变量的作用域总是由在代码中被赋值的地方所�
 有很多种python解释器
 
 #### CPython
+
 当我们从Python官方网站下载并安装好Python 3.x后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。
 
 CPython是使用最广的Python解释器。
 
 #### IPython
+
 IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了IE。
 
 CPython用>>>作为提示符，而IPython用In [序号]:作为提示符。
 
 #### PyPy
+
 PyPy是另一个Python解释器，它的目标是执行速度。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。
 
 绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到PyPy下执行，就需要了解PyPy和CPython的不同点。
 
 #### Jython
+
 Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。
 
 #### IronPython
+
 IronPython和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。
 
 #### 小结
+
 Python的解释器很多，但使用最广泛的还是CPython。如果要和Java或.Net平台交互，最好的办法不是用Jython或IronPython，而是通过网络调用来交互，确保各程序之间的独立性。
 
 参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1016966024263840
@@ -940,4 +946,69 @@ Python中有分为大内存和小内存：（256K为界限分大小内存）
 
 顾名思义，该序列是可变的，不支持hash()
 
-list
+- list
+
+## 3 面向对象的特点
+
+本文介绍面向对象的3个特点：
+
+- 1 封装
+封装是从业务逻辑中抽象对象时，要赋予对象相关数据与操作，将一些数据和操作打包在一起的过程。封装是使用对象的主要魅力之一，它提供了一个简单方法来创建复杂方案，解决了世界是如何工作的这一问题，我们自然的认为周围的世界是由相互作用的对象组成，每个对象都有自己相关的数据，并能完成一定的功能，从设计的角度来看，封装还提供了一个重要的服务，它分开了是什么和怎么做这两个问题。对象的实现与使用是相互独立的，封装的另外一个优势是支持代码复用，它可以将常用功能以组件方式打包起来。
+
+- 2 多态
+多态意味着多种形式，当用面向对象时，它是指对象是怎么回应一个依赖于对象类型或种类的消息。多态的作用是让程序在不同情况下用一个函数名启用不同的方法。
+多态举例：在示例代码的 Child 类中重写 print_title() 方法：若为male，print boy；若为female，print girl
+
+示例代码
+```py
+class Person(object):
+    def __init__(self,name,sex):
+        self.name = name
+        self.sex = sex
+
+    def print_title(self):
+        if self.sex == "male":
+            print("man")
+        elif self.sex == "female":
+            print("woman")
+
+class Child(Person):                            # Child 继承 Person
+    pass
+
+May = Child("May","female")
+Peter = Person("Peter","male")
+
+print(May.name,May.sex,Peter.name,Peter.sex)    # 子类继承父类方法及属性
+May.print_title()
+Peter.print_title()
+```
+```py
+class Child(Person):                # Child 继承 Person
+    def print_title(self):
+        if self.sex == "male":
+            print("boy")
+        elif self.sex == "female":
+            print("girl")
+
+May = Child("May","female")
+Peter = Person("Peter","male")
+
+print(May.name,May.sex,Peter.name,Peter.sex)
+May.print_title()
+Peter.print_title()
+```
+当子类和父类都存在相同的 `print_title()`方法时，子类的 `print_title()` 覆盖了父类的 `print_title()`，在代码运行时，会调用子类的 `print_title()`。
+这样，我们就获得了继承的另一个好处：**多态**。 
+
+多态给予了面向对象系统极大的灵活性，对象可以用该对象应该用的方式来执行动作，如果没有面向对象，这种灵活性很难实现。当我们需要传入更多的子类，例如新增 Teenagers、Grownups 等，我们只需要继承 Person 类型就可以了，而print_title()方法既可以不重写（即使用Person的），也可以重写一个特有的。这就是多态的意思。调用方只管调用，不管细节，而当我们新增一种Person的子类时，只要确保新方法编写正确，而不用管原来的代码。这就是著名的**开闭**原则：
+
+    对扩展开放（Open for extension）：允许子类重写方法函数
+    对修改封闭（Closed for modification）：不重写，直接继承父类方法函数
+
+- 3 继承
+一个类（subclass,基类）可以继承另一个类（superclass，超类）.
+举例：
+建立一个系统以记录员工信息，需要一个Employee类，它包含所有员工都具有的一般信息，其中一个方法是homeAddress()，该方法可返回员工的住址信息。员工分为正式员工(按月发工资)和临时员工（按天发工资），为正式员工定义一个MonthlyEmployee类（Employee类的子类），为临时员工定义一个DaylyEmployee类（Employee类的子类），这两个子类都继承了Employee类，因此都有homeAddress()方法，然而，不同类型的员工，发工资的方法不同，正式员工有monthlyPay()方法，临时员工有daylyPay()方法。
+**继承的优点：**
+1、建造系统中的类，避免重复操作，例如，我们不必为两个子类分别写一个homeAddress()方法，从Employee类继承即可。
+2、新类经常是基于已经存在的类，这样就可以提升代码的复用程度。
