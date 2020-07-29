@@ -957,8 +957,7 @@ Python中有分为大内存和小内存：（256K为界限分大小内存）
 
 - 2 多态
 多态意味着多种形式，当用面向对象时，它是指对象是怎么回应一个依赖于对象类型或种类的消息。多态的作用是让程序在不同情况下用一个函数名启用不同的方法。
-多态举例：在示例代码的 Child 类中重写 print_title() 方法：若为male，print boy；若为female，print girl
-
+多态举例：
 示例代码
 ```py
 class Person(object):
@@ -982,6 +981,7 @@ print(May.name,May.sex,Peter.name,Peter.sex)    # 子类继承父类方法及属
 May.print_title()
 Peter.print_title()
 ```
+在示例代码的 Child 类中重写 print_title() 方法：若为male，print boy；若为female，print girl
 ```py
 class Child(Person):                # Child 继承 Person
     def print_title(self):
