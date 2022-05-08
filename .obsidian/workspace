@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "b2d899ffc7f4fcac",
+    "type": "split",
+    "children": [
+      {
+        "id": "1706c2e3c8260408",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Algorithm/时读时新.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "63ca3e0a89170844",
+    "type": "split",
+    "children": [
+      {
+        "id": "d52aaa5d3bf95531",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e00da2c722fbc940",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "5be39aeab7401f97",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6a632ae77bb7680a",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb929d5c53c26913",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5476d1a326095192",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Algorithm/时读时新.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "1706c2e3c8260408",
+  "lastOpenFiles": [
+    "Algorithm/时读时新.md",
+    "Algorithm/readme.md",
+    "Algorithm/Tree/BST.md",
+    "Python/readme.md",
+    "其他/readme.md"
+  ]
+}
