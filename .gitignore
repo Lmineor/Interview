@@ -15,3 +15,7 @@
 # vendor/
 .obsidian
 
+
+.DS_Store
+
+.idea/

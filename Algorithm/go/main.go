@@ -1,1 +1,7 @@
-package _go
+package main
+
+import "github.com/Lmineor/interview/array/matrix"
+
+func main(){
+	matrix.Entry()
+}
