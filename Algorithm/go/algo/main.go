@@ -1,8 +1,10 @@
 package main
 
-import "github.com/Lmineor/algo/link"
+import (
+	"github.com/Lmineor/algo/hash"
+)
 
-func main(){
+func main() {
 	//array.Entry()
-	link.Entry()
+	hash.Entry()
 }
