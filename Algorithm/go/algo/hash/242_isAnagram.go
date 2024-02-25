@@ -10,10 +10,16 @@ package hash
 //
 //
 
-
 func isAnagram(s string, t string) bool {
-	if len(s) != len(t){
+	if len(s) != len(t) {
 		return false
 	}
-	
+	sMap := make(map[rune]int, 0)
+	for _, c := range s {
+		if _, ok := sMap[c]; ok{
+			sMap[c] = sMap[c]+1
+		}else{
+			sMap[c] = 1
+		}
+	}
 }
