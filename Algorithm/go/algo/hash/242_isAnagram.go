@@ -16,10 +16,23 @@ func isAnagram(s string, t string) bool {
 	}
 	sMap := make(map[rune]int, 0)
 	for _, c := range s {
-		if _, ok := sMap[c]; ok{
-			sMap[c] = sMap[c]+1
-		}else{
+		if _, ok := sMap[c]; ok {
+			sMap[c] = sMap[c] + 1
+		} else {
 			sMap[c] = 1
 		}
 	}
+	for _, c := range t {
+		if _, ok := sMap[c]; ok {
+			sMap[c] = sMap[c] - 1
+		} else {
+			return false
+		}
+	}
+	for _,v := range sMap{
+		if v != 0{
+			return false
+		}
+	}
+	return true
 }
