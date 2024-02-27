@@ -1,5 +1,6 @@
 package hash
 
+import "fmt"
 
 //题意：给定两个数组，编写一个函数来计算它们的交集。
 //
@@ -31,6 +32,7 @@ func intersection(nums1 []int, nums2 []int) []int {
 	var result []int
 	resultMap := make(map[int]int, 0)
 	bucket := make(map[int]int,0)
+	// 统计nums1中的数字的频数
 	for _, num := range nums1{
 		if _, ok:= bucket[num];!ok{
 			bucket[num] = 1
@@ -47,8 +49,14 @@ func intersection(nums1 []int, nums2 []int) []int {
 			resultMap[num] = 1
 		}
 	}
-	for k, _:= range resultMap{
-		result = append(result, k)
+	fmt.Println(resultMap)
+	fmt.Println(bucket)
+	for k, v:= range resultMap{
+		if v <= bucket[k]{
+			for i:= 0; i<v ;i++{
+				result = append(result, k)
+			}
+		}
 	}
 	return result
 }
