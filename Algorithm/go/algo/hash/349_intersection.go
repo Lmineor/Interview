@@ -37,8 +37,9 @@ func intersection(nums1 []int, nums2 []int) []int {
 		}else{
 			bucket[num] = bucket[num]+1
 		}
-
 	}
+
+	// 重复的数字在nums2中出现的次数
 	for _, num:= range nums2{
 		if _, ok := bucket[num]; ok{
 			resultMap[num] = resultMap[num]+1
