@@ -29,14 +29,21 @@ func intersection2(nums1 []int, nums2 []int) []int {
 
 func intersection(nums1 []int, nums2 []int) []int {
 	var result []int
-	resultMap := make(map[int]struct{}, 0)
-	bucket := make(map[int]struct{},0)
+	resultMap := make(map[int]int, 0)
+	bucket := make(map[int]int,0)
 	for _, num := range nums1{
-		bucket[num] = struct{}{}
+		if _, ok:= bucket[num];!ok{
+			bucket[num] = 1
+		}else{
+			bucket[num] = bucket[num]+1
+		}
+
 	}
 	for _, num:= range nums2{
 		if _, ok := bucket[num]; ok{
-			resultMap[num] = struct{}{}
+			resultMap[num] = resultMap[num]+1
+		}else{
+			resultMap[num] = 1
 		}
 	}
 	for k, _:= range resultMap{
