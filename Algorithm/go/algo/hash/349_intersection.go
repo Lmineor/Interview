@@ -1,7 +1,5 @@
 package hash
 
-import "fmt"
-
 //题意：给定两个数组，编写一个函数来计算它们的交集。
 //
 //349. 两个数组的交集
@@ -13,16 +11,16 @@ import "fmt"
 func intersection2(nums1 []int, nums2 []int) []int {
 	var result []int
 	resultMap := make(map[int]struct{}, 0)
-	bucket := make(map[int]struct{},0)
-	for _, num := range nums1{
+	bucket := make(map[int]struct{}, 0)
+	for _, num := range nums1 {
 		bucket[num] = struct{}{}
 	}
-	for _, num:= range nums2{
-		if _, ok := bucket[num]; ok{
+	for _, num := range nums2 {
+		if _, ok := bucket[num]; ok {
 			resultMap[num] = struct{}{}
 		}
 	}
-	for k, _:= range resultMap{
+	for k, _ := range resultMap {
 		result = append(result, k)
 	}
 	return result
@@ -31,31 +29,37 @@ func intersection2(nums1 []int, nums2 []int) []int {
 func intersection(nums1 []int, nums2 []int) []int {
 	var result []int
 	resultMap := make(map[int]int, 0)
-	bucket := make(map[int]int,0)
+	bucket := make(map[int]int, 0)
 	// 统计nums1中的数字的频数
-	for _, num := range nums1{
-		if _, ok:= bucket[num];!ok{
+	for _, num := range nums1 {
+		if _, ok := bucket[num]; !ok {
 			bucket[num] = 1
-		}else{
-			bucket[num] = bucket[num]+1
+		} else {
+			bucket[num] = bucket[num] + 1
 		}
 	}
 
 	// 重复的数字在nums2中出现的次数
-	for _, num:= range nums2{
-		if _, ok := bucket[num]; ok{
-			resultMap[num] = resultMap[num]+1
-		}else{
-			resultMap[num] = 1
-		}
-	}
-	fmt.Println(resultMap)
-	fmt.Println(bucket)
-	for k, v:= range resultMap{
-		if v <= bucket[k]{
-			for i:= 0; i<v ;i++{
-				result = append(result, k)
+	for _, num := range nums2 {
+		if _, ok := bucket[num]; ok {
+			if _, ok1 := resultMap[num]; ok1 {
+				resultMap[num] = resultMap[num] + 1
+			} else {
+				resultMap[num] = 1
 			}
+		}
+
+	}
+
+	for k, v := range resultMap {
+		minNum := 1
+		if v <= bucket[k] {
+			minNum = v
+		} else {
+			minNum = bucket[k]
+		}
+		for i := 0; i < minNum; i++ {
+			result = append(result, k)
 		}
 	}
 	return result
