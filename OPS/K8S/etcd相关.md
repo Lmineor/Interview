@@ -1,3 +1,11 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [简述 ETCD 适应的场景？](#%E7%AE%80%E8%BF%B0-etcd-%E9%80%82%E5%BA%94%E7%9A%84%E5%9C%BA%E6%99%AF)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 简述 ETCD 适应的场景？
 etcd 基于其优秀的特点，可广泛的应用于以下场景：
 

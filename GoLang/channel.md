@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Channel介绍](#channel%E4%BB%8B%E7%BB%8D)
+  - [CSP 模型](#csp-%E6%A8%A1%E5%9E%8B)
+  - [Channel](#channel)
+    - [channel 创建](#channel-%E5%88%9B%E5%BB%BA)
+    - [channel 的读写操作](#channel-%E7%9A%84%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C)
+    - [关闭 channel](#%E5%85%B3%E9%97%AD-channel)
+    - [channel 的类型](#channel-%E7%9A%84%E7%B1%BB%E5%9E%8B)
+      - [无缓存的 channel](#%E6%97%A0%E7%BC%93%E5%AD%98%E7%9A%84-channel)
+      - [有缓存的 channel](#%E6%9C%89%E7%BC%93%E5%AD%98%E7%9A%84-channel)
+    - [channel 的用法](#channel-%E7%9A%84%E7%94%A8%E6%B3%95)
+  - [Channel是同步的还是异步的？](#channel%E6%98%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84)
+  - [Channel死锁场景](#channel%E6%AD%BB%E9%94%81%E5%9C%BA%E6%99%AF)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 
 # Channel介绍

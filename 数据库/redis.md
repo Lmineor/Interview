@@ -18,7 +18,7 @@
   - [4 Redis为什么这么快](#4-redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%BF%AB)
   - [5 Redis 和 Memcached 的区别](#5-redis-%E5%92%8C-memcached-%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [6 Redis 的淘汰策略](#6-redis-%E7%9A%84%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5)
-  - [Redis部署](#redis%E9%83%A8%E7%BD%B2)
+  - [7 Redis部署](#7-redis%E9%83%A8%E7%BD%B2)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

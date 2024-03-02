@@ -25,7 +25,6 @@
   - [9 HTTP和HTTPS](#9-http%E5%92%8Chttps)
     - [状态码](#%E7%8A%B6%E6%80%81%E7%A0%81)
     - [状态码详解](#%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3)
-    - [HTTP](#http)
       - [HTTP优化方案：](#http%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88)
       - [HTTP1.0 HTTP 1.1主要区别](#http10-http-11%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB)
       - [URI和URL](#uri%E5%92%8Curl)

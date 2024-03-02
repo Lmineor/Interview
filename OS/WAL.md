@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [什么是WAL](#%E4%BB%80%E4%B9%88%E6%98%AFwal)
+- [备份](#%E5%A4%87%E4%BB%BD)
+- [WAL](#wal)
+  - [WAL 的优点](#wal-%E7%9A%84%E4%BC%98%E7%82%B9)
+    - [提升性能](#%E6%8F%90%E5%8D%87%E6%80%A7%E8%83%BD)
+    - [checkpoint](#checkpoint)
+- [具体实现](#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0)
+  - [mysql](#mysql)
+  - [zookeeper](#zookeeper)
+  - [elasticsearch](#elasticsearch)
+  - [etcd](#etcd)
+  - [hbase](#hbase)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 什么是WAL
 
 WAL(Write Ahead Log)预写日志,是数据库系统中常见的一种手段，用于保证数据操作的原子性和持久性。

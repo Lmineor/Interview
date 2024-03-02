@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [K8s通信问题](#k8s%E9%80%9A%E4%BF%A1%E9%97%AE%E9%A2%98)
+- [1](#1)
+  - [一、简述你知道的几种CNI网络插件，并详述其工作原理。K8s常用的CNI网络插件 （calico && flannel），简述一下它们的工作原理和区别.](#%E4%B8%80%E7%AE%80%E8%BF%B0%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%A7%8Dcni%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6%E5%B9%B6%E8%AF%A6%E8%BF%B0%E5%85%B6%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86k8s%E5%B8%B8%E7%94%A8%E7%9A%84cni%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6-calico--flannel%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8B%E5%AE%83%E4%BB%AC%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8C%BA%E5%88%AB)
+  - [2、Flannel的工作原理：](#2flannel%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # K8s通信问题
 

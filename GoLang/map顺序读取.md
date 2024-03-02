@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [现象](#%E7%8E%B0%E8%B1%A1)
+- [原因](#%E5%8E%9F%E5%9B%A0)
+- [如何顺序读取](#%E5%A6%82%E4%BD%95%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 ## 现象
 

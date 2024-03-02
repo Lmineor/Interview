@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Go 语言的协程 goroutine](#go-%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8D%8F%E7%A8%8B-goroutine)
+- [调度器](#%E8%B0%83%E5%BA%A6%E5%99%A8)
+  - [被废弃的 goroutine 调度器 - GM模型](#%E8%A2%AB%E5%BA%9F%E5%BC%83%E7%9A%84-goroutine-%E8%B0%83%E5%BA%A6%E5%99%A8---gm%E6%A8%A1%E5%9E%8B)
+    - [简要说明](#%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E)
+    - [老调度器有几个缺点：](#%E8%80%81%E8%B0%83%E5%BA%A6%E5%99%A8%E6%9C%89%E5%87%A0%E4%B8%AA%E7%BC%BA%E7%82%B9)
+  - [新调度器](#%E6%96%B0%E8%B0%83%E5%BA%A6%E5%99%A8)
+    - [调度器细节](#%E8%B0%83%E5%BA%A6%E5%99%A8%E7%BB%86%E8%8A%82)
+    - [调用过程](#%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B)
+    - [新调度器中引入了线程自旋](#%E6%96%B0%E8%B0%83%E5%BA%A6%E5%99%A8%E4%B8%AD%E5%BC%95%E5%85%A5%E4%BA%86%E7%BA%BF%E7%A8%8B%E8%87%AA%E6%97%8B)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 > 好文：https://yizhi.ren/2019/06/03/goscheduler
 

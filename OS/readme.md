@@ -1,3 +1,28 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [操作系统](#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+  - [1 select,poll和epoll](#1-selectpoll%E5%92%8Cepoll)
+  - [2 调度算法](#2-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95)
+  - [3 死锁](#3-%E6%AD%BB%E9%94%81)
+  - [4 程序编译与链接](#4-%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91%E4%B8%8E%E9%93%BE%E6%8E%A5)
+    - [1 预处理](#1-%E9%A2%84%E5%A4%84%E7%90%86)
+    - [2 编译](#2-%E7%BC%96%E8%AF%91)
+    - [3 汇编](#3-%E6%B1%87%E7%BC%96)
+    - [4 链接](#4-%E9%93%BE%E6%8E%A5)
+  - [5 静态链接和动态链接](#5-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5)
+  - [6 虚拟内存技术](#6-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E6%8A%80%E6%9C%AF)
+  - [7 分页和分段](#7-%E5%88%86%E9%A1%B5%E5%92%8C%E5%88%86%E6%AE%B5)
+    - [分页与分段的主要区别](#%E5%88%86%E9%A1%B5%E4%B8%8E%E5%88%86%E6%AE%B5%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB)
+  - [8 页面置换算法](#8-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95)
+  - [9 边沿触发和水平触发](#9-%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91)
+  - [10 线程安全](#10-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8)
+- [*NIX](#nix)
+  - [unix进程间通信方式(IPC)](#unix%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8Fipc)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
    * [操作系统](#操作系统)

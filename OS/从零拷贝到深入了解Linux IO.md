@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [需要了解的词](#%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E8%AF%8D)
+  - [DMA](#dma)
+  - [MMU](#mmu)
+  - [虚拟内存](#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98)
+  - [NFS](#nfs)
+  - [copy-on-write](#copy-on-write)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 存储器是计算机的核心部件之一，在完全理想的状态下，存储器应该要同时具备以下三种特性：
 
 - 速度足够快：存储器的存取速度应当快于 CPU 执行一条指令，这样 CPU 的效率才不会受限于存储器；

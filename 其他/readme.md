@@ -2,14 +2,27 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [计算机原理及其他相关内容](#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9)
-  - [什么是内存对齐？为什么要内存对齐？](#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
-    - [什么是内存对齐](#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
-    - [为什么要内存对齐？](#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
-  - [堆区（heap）和栈区（stack）的区别](#%E5%A0%86%E5%8C%BAheap%E5%92%8C%E6%A0%88%E5%8C%BAstack%E7%9A%84%E5%8C%BA%E5%88%AB)
-  - [restful规范](#restful%E8%A7%84%E8%8C%83)
-    - [RESTful6大原则](#restful6%E5%A4%A7%E5%8E%9F%E5%88%99)
-    - [restful规范的认识](#restful%E8%A7%84%E8%8C%83%E7%9A%84%E8%AE%A4%E8%AF%86)
+- [1 计算机原理及其他相关内容](#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9)
+  - [1.1 什么是内存对齐？为什么要内存对齐？](#11-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+    - [1.1.1 什么是内存对齐](#111-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+    - [1.1.2 为什么要内存对齐？](#112-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90)
+  - [1.2 堆区（heap）和栈区（stack）的区别](#12-%E5%A0%86%E5%8C%BAheap%E5%92%8C%E6%A0%88%E5%8C%BAstack%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [1.3 restful规范](#13-restful%E8%A7%84%E8%8C%83)
+    - [1.3.1 RESTful6大原则](#131-restful6%E5%A4%A7%E5%8E%9F%E5%88%99)
+    - [1.3.2 restful规范的认识](#132-restful%E8%A7%84%E8%8C%83%E7%9A%84%E8%AE%A4%E8%AF%86)
+- [2 其他](#2-%E5%85%B6%E4%BB%96)
+  - [2.1 散列表](#21-%E6%95%A3%E5%88%97%E8%A1%A8)
+    - [2.1.1 散列表的基本概念](#211-%E6%95%A3%E5%88%97%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5)
+    - [2.1.2 散列函数的构造方法](#212-%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95)
+      - [1、 直接定址法](#1-%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95)
+      - [2、除留余数法](#2%E9%99%A4%E7%95%99%E4%BD%99%E6%95%B0%E6%B3%95)
+      - [3、数字分析法](#3%E6%95%B0%E5%AD%97%E5%88%86%E6%9E%90%E6%B3%95)
+      - [4、平方取中法](#4%E5%B9%B3%E6%96%B9%E5%8F%96%E4%B8%AD%E6%B3%95)
+      - [5、折叠法](#5%E6%8A%98%E5%8F%A0%E6%B3%95)
+    - [2.2.1 处理冲突的方法](#221-%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E7%9A%84%E6%96%B9%E6%B3%95)
+      - [1、开放定址法](#1%E5%BC%80%E6%94%BE%E5%AE%9A%E5%9D%80%E6%B3%95)
+      - [2、拉链法（链接法，chaining）](#2%E6%8B%89%E9%93%BE%E6%B3%95%E9%93%BE%E6%8E%A5%E6%B3%95chaining)
+    - [2.2.1 散列查找及性能分析](#221-%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

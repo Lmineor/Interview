@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [二叉搜索树](#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91)
+  - [前菜](#%E5%89%8D%E8%8F%9C)
+    - [树节点的定义](#%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E5%AE%9A%E4%B9%89)
+    - [前序遍历](#%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86)
+    - [中序遍历](#%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86)
+    - [后序遍历](#%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86)
+  - [98. 验证二叉搜索树](#98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91)
+    - [方法一：](#%E6%96%B9%E6%B3%95%E4%B8%80)
+  - [99.恢复二叉搜索树](#99%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 二叉搜索树
 题目来源：[leetcode](https://leetcode-cn.com/problems)
 

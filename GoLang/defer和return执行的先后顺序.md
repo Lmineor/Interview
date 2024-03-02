@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+  - [eg1 无命名返回值](#eg1-%E6%97%A0%E5%91%BD%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC)
+  - [eg2：带命名返回值的函数:](#eg2%E5%B8%A6%E5%91%BD%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0)
+- [理解return 返回值的运行机制:](#%E7%90%86%E8%A7%A3return-%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 1. 多个`defer`的执行顺序为"后进先出"
 2. `defer`,`return`,返回值三者的执行逻辑应该是:`return`最先执行,`return`负责将结果写入返回值中;接着`defer`开始一些收尾工作;最后函数携带当前返回值退出.
 

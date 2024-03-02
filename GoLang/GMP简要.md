@@ -1,3 +1,11 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [GMP分别是什么，分别有多少数量？](#gmp%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E5%88%86%E5%88%AB%E6%9C%89%E5%A4%9A%E5%B0%91%E6%95%B0%E9%87%8F)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # GMP分别是什么，分别有多少数量？
 G：goroutine，go的协程，每个go关键字都会创建一个协程
 M：machine，工作线程，在Go中称为Machine，数量对应真实的CPU数

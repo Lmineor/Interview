@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [1. 理解CNI](#1-%E7%90%86%E8%A7%A3cni)
+  - [1.1 cni规范中的一些东西](#11-cni%E8%A7%84%E8%8C%83%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF)
+    - [1.1.1 网络配置格式](#111-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%A0%BC%E5%BC%8F)
+- [2. k8s中如何使用cni](#2-k8s%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8cni)
+- [3. 哪个cni插件适合](#3-%E5%93%AA%E4%B8%AAcni%E6%8F%92%E4%BB%B6%E9%80%82%E5%90%88)
+  - [3.1 环境限制](#31-%E7%8E%AF%E5%A2%83%E9%99%90%E5%88%B6)
+  - [3.2 功能需求](#32-%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82)
+  - [3.3 性能需求](#33-%E6%80%A7%E8%83%BD%E9%9C%80%E6%B1%82)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 CNI（container network interface）
 
 - container runtime在invoking插件前必须创建一个新的网络命名空间:The container runtime must create a new network namespace for the container before invoking any plugins.

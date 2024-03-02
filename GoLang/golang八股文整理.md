@@ -1,3 +1,37 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [1. 进程、线程、协程](#1-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B)
+  - [1.1 协程与线程的区别：](#11-%E5%8D%8F%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [1.2 线程的优点](#12-%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%82%B9)
+  - [1.3 缺点：](#13-%E7%BC%BA%E7%82%B9)
+  - [1.4 有栈协程和无栈协程](#14-%E6%9C%89%E6%A0%88%E5%8D%8F%E7%A8%8B%E5%92%8C%E6%97%A0%E6%A0%88%E5%8D%8F%E7%A8%8B)
+- [2. Goroutine调度策略](#2-goroutine%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5)
+- [3. Groutine的切换时机](#3-groutine%E7%9A%84%E5%88%87%E6%8D%A2%E6%97%B6%E6%9C%BA)
+- [4. Context原理](#4-context%E5%8E%9F%E7%90%86)
+- [5. golang内存对齐机制](#5-golang%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E6%9C%BA%E5%88%B6)
+  - [5.1 对齐原则：](#51-%E5%AF%B9%E9%BD%90%E5%8E%9F%E5%88%99)
+- [6. Golang中new和make的区别？](#6-golang%E4%B8%ADnew%E5%92%8Cmake%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [7. Golang中，array和slice的区别](#7-golang%E4%B8%ADarray%E5%92%8Cslice%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [8. Golang Slice的扩容机制，有什么注意点？](#8-golang-slice%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E6%B3%A8%E6%84%8F%E7%82%B9)
+- [9. Golang的map特点](#9-golang%E7%9A%84map%E7%89%B9%E7%82%B9)
+  - [9.1 Golang的map为什么是无序的？](#91-golang%E7%9A%84map%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84)
+  - [9.2 Map的负载因子是6.5？](#92-map%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E6%98%AF65)
+- [10. 空 struct{} 占用空间么？用途是什么？](#10-%E7%A9%BA-struct-%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4%E4%B9%88%E7%94%A8%E9%80%94%E6%98%AF%E4%BB%80%E4%B9%88)
+- [11. golang值接收者和指针接收者的区别](#11-golang%E5%80%BC%E6%8E%A5%E6%94%B6%E8%80%85%E5%92%8C%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [12. golang中指针的作用](#12-golang%E4%B8%AD%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%9C%E7%94%A8)
+- [13. go struct能不能比较](#13-go-struct%E8%83%BD%E4%B8%8D%E8%83%BD%E6%AF%94%E8%BE%83)
+- [14. Golang的方法有什么特别之处](#14-golang%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E5%88%AB%E4%B9%8B%E5%A4%84)
+- [15. Golang可变参数](#15-golang%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0)
+- [16. Golang导入包时，为什么可能使用`_ .`导入](#16-golang%E5%AF%BC%E5%85%A5%E5%8C%85%E6%97%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8_-%E5%AF%BC%E5%85%A5)
+  - [16.1 包前是下划线`_`](#161-%E5%8C%85%E5%89%8D%E6%98%AF%E4%B8%8B%E5%88%92%E7%BA%BF_)
+  - [16.2 包前是点`.`](#162-%E5%8C%85%E5%89%8D%E6%98%AF%E7%82%B9)
+- [17. Golang的参数传递、引用类型](#17-golang%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)
+- [18. Golang接口接收规则](#18-golang%E6%8E%A5%E5%8F%A3%E6%8E%A5%E6%94%B6%E8%A7%84%E5%88%99)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. 进程、线程、协程
 
 >[golang八股文整理（持续搬运）_golang面试八股文-CSDN博客](https://blog.csdn.net/qq_43716830/article/details/124405506)
