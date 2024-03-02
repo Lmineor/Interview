@@ -1,3 +1,11 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [1. 引擎及区别](#1-%E5%BC%95%E6%93%8E%E5%8F%8A%E5%8C%BA%E5%88%AB)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 1. 引擎及区别
 主要 MyISAM 与 InnoDB 两个引擎，其主要区别如下：
 一、InnoDB 支持事务，MyISAM 不支持，这一点是非常之重要。事务是一种高级的处理方式，如在一些列增删改中只要哪个出错还可以回滚还原，而 MyISAM就不可以了；
