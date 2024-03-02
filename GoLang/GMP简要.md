@@ -5,3 +5,5 @@ P：process，包含运行Go代码所需要的必要资源，用来调度G和M�
 
 线程想运行任务就得获取 P，从 P 的本地队列获取 G，当 P 的本地队列为空时，M 也会尝试从全局队列或其他 P 的本地队列获取 G。M 运行 G，G 执行之后，M 会从 P 获取下一个 G，不断重复下去。
 
+
+详细见：[GMP | mineor](https://www.mineor.xyz/posts/Go/gmp/)
