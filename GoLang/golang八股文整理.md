@@ -183,21 +183,6 @@ see [map顺序读取](./map顺序读取)
 负载因子=哈希表存储的元素个数/桶个数
 ```
 
-# Channel
-## Channel是同步的还是异步的？
-Channel是异步进行的, channel存在3种状态：
-
-1. nil，未初始化的状态，只进行了声明，或者手动赋值为nil
-2. active，正常的channel，可读或者可写
-3. closed，已关闭，千万不要误认为关闭channel后，channel的值是nil，对已关闭channel读写都会panic
-
-## Channel死锁场景
-1. 非缓存channel只写不读
-2. 非缓存channel读在写后面
-3. 缓存channel写入超过缓冲区数量
-4. 空读
-5. 多个协程相互等待
-
 # 空 struct{} 占用空间么？用途是什么？
 空结构体 struct{} 实例不占据任何的内存空间。
 
