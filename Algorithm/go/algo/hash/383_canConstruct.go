@@ -15,15 +15,18 @@ package hash
 //#
 
 func canConstruct(ransomNote string, magazine string) bool {
-	record := make(map[string]int)
+	record1 := make(map[rune]int)
 	for _, c := range magazine {
-		record[string(c)]++
+		record1[c]++
 	}
-	for _, c := range ransomNote {
-		if _, ok := record[string(c)]; !ok || record[string(c)] == 0 {
+	record2 := make(map[rune]int)
+	for _, c := range ransomNote{
+		record2[c]++
+	}
+	for k, v := range record2{
+		v1 := record1[k]
+		if v1 < v{
 			return false
-		} else {
-			record[string(c)]--
 		}
 	}
 	return true
