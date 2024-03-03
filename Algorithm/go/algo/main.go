@@ -1,12 +1,9 @@
 package main
 
-//func main() {
-//	//array.Entry()
-//	hash.Entry()
-//}
+import "github.com/Lmineor/algo/hash"
 
 func main() {
-	print("1", "2", "3")
+	//array.Entry()
+	hash.Entry()
 }
-
 
