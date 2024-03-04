@@ -15,8 +15,26 @@ package hash
 
 
 func threeSum(nums []int) [][]int {
+	result := make([][]int, 0)
+	for index, num := range nums{
+		otherSlice := nums[:index]
+		otherSlice = append(otherSlice, nums[index:]...)
+		if num1, num2, find := twoSum1(otherSlice, -num); find{
+			anAnswer := []int{num, num1, num2}
+			result = append(result, anAnswer)
+		}
+	}
+	return result
+}
+
+func twoSum1(nums []int, target int)(nums1, nums2 int, find bool){
 	record := make(map[int]int)
 	for _, num := range nums{
-		
+		if _, ok := record[target-num];ok {
+			return num, target-num, true
+		}else{
+			record[num]=1
+		}
 	}
+	return 0, 0, false
 }
