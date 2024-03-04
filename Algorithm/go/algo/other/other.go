@@ -17,5 +17,5 @@ func fib(n int) int {
 
 func Entry() {
 
-	fmt.Println(fib(10))
+	fmt.Println(mySqrt(8))
 }
