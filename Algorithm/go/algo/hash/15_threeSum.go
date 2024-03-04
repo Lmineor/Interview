@@ -1,5 +1,6 @@
 package hash
 
+import "sort"
 
 //给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
 //
@@ -19,10 +20,17 @@ func threeSum(nums []int) [][]int {
 	if len(nums)<3{
 		return result
 	}
-
+	sort.Ints(nums)
+	var lastNum int
 	for index, num := range nums{
-		otherSlice := nums[:index]
-		otherSlice = append(otherSlice, nums[index:]...)
+		//otherSlice := nums[:index]
+		if num == lastNum{
+			continue
+		}else{
+			lastNum=num
+		}
+		otherSlice := nums[index:]
+		//otherSlice = append(otherSlice, nums[index:]...)
 		if num1, num2, find := twoSum1(otherSlice, -num); find{
 			anAnswer := []int{num, num1, num2}
 			result = append(result, anAnswer)
