@@ -14,6 +14,8 @@ import "sort"
 //
 //#
 
+//思路 先排序，后双指针
+
 
 func threeSum(nums []int) [][]int {
 	result := make([][]int, 0)
@@ -21,36 +23,31 @@ func threeSum(nums []int) [][]int {
 		return result
 	}
 	sort.Ints(nums)
-	var lastNum int
-	for index, num := range nums{
-		//otherSlice := nums[:index]
-		if num == lastNum{
-			continue
-		}else{
-			lastNum=num
+	for i:=0; i<len(nums)-2;i++{
+		n1 := nums[i]
+		if n1 > 0{
+			break
 		}
-		otherSlice := nums[index:]
-		//otherSlice = append(otherSlice, nums[index:]...)
-		if num1, num2, find := twoSum1(otherSlice, -num); find{
-			anAnswer := []int{num, num1, num2}
-			result = append(result, anAnswer)
+		if i>0&& n1== nums[i-1]{
+			continue
+		}
+		l, r:= i+1, len(nums)-1
+		for l< r{
+			n2, n3 := nums[l], nums[r]
+			if n1+n2+n3==0{
+				result = append(result, []int{n1, n2, n3})
+				for l< r&&nums[l] == n2{
+					l++
+				}
+				for l<r && nums[r] == n3{
+					r--
+				}
+			}else if n1+n2+n3<0{
+				l++
+			}else{
+				r--
+			}
 		}
 	}
 	return result
-}
-
-func appendResult(result [][]int, answer []int){
-
-}
-
-func twoSum1(nums []int, target int)(nums1, nums2 int, find bool){
-	record := make(map[int]int)
-	for _, num := range nums{
-		if _, ok := record[target-num];ok {
-			return num, target-num, true
-		}else{
-			record[num]=1
-		}
-	}
-	return 0, 0, false
 }
