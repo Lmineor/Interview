@@ -8,15 +8,17 @@ package str
 //
 //输出：输出共一行，为进行了右旋转操作后的字符串。
 
-func rightReverse(s string, n int) {
-
+func rightReverse(s string, n int) string{
+	strBytes := []byte(s)
+	reverse(strBytes, 0, len(strBytes)-1)
+	reverse(strBytes, 0, n)
+	reverse(strBytes, n, len(strBytes)-1)
+	return string(strBytes)
 }
 
-func reverse(s string) {
-	l := 0
-	r := len(s) - 1
+func reverse(strBytes []byte, l, r int) {
 	for l < r {
-		s[l], s[r] = s[r], s[l]
+		strBytes[l], strBytes[r] = strBytes[r], strBytes[l]
 		l++
 		r--
 	}
