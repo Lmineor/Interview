@@ -11,7 +11,7 @@ package str
 func rightReverse(s string, n int) string{
 	strBytes := []byte(s)
 	reverse(strBytes, 0, len(strBytes)-1)
-	reverse(strBytes, 0, n)
+	reverse(strBytes, 0, n-1)
 	reverse(strBytes, n, len(strBytes)-1)
 	return string(strBytes)
 }
