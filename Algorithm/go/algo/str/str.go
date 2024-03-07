@@ -21,7 +21,5 @@ func in(num int, amap map[int]int) bool {
 
 func Entry() {
 	//fmt.Println(twoSum(10, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}))
-	s := []byte("hell")
-	reverseString(s)
-	fmt.Println(string(s))
+	fmt.Println(reverseWords("the sky       is blue"))
 }
