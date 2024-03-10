@@ -16,6 +16,7 @@ func strStr(haystack string, needle string) int {
 		return 0
 	}
 	l := len(haystack)
+
 	for i := 0; i < l-nL; i++ {
 		if haystack[i] == needle[0] {
 			var j int = 0
