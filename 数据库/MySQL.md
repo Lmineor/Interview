@@ -3,6 +3,8 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [1. 引擎及区别](#1-%E5%BC%95%E6%93%8E%E5%8F%8A%E5%8C%BA%E5%88%AB)
+  - [1.1 简述InnoDB存储引擎](#11-%E7%AE%80%E8%BF%B0innodb%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E)
+  - [1.2 简述MyISAM存储引擎](#12-%E7%AE%80%E8%BF%B0myisam%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
