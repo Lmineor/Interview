@@ -354,3 +354,7 @@ Golang的引用类型包括 slice、map 和 channel。它们有复杂的内部�
 | ----------------- | -------- |
 | (t T)             | T and *T |
 | (t *T)            | *T       |
+
+# 19. Golang中除了加Mutex锁以外还有哪些方式安全读写共享变量？
+
+ `Golang`中`Goroutine` 可以通过 `Channel` 进行安全读写共享变量。
