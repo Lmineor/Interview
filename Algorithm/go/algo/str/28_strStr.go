@@ -28,10 +28,8 @@ func strStr(haystack string, needle string) int {
 			if j == nL {
 				return i
 			}
-		}else{
-			i++
 		}
-
+		i++
 	}
 	return -1
 }
