@@ -19,5 +19,21 @@ package str
 //#
 
 func repeatedSubstringPattern(s string) bool {
+	bytesS := []byte(s)
+	for step := 0; step < len(bytesS)/2; step++ {
 
+	}
+}
+
+func same(byteS []byte, sub []byte) bool {
+	if len(byteS)%len(sub) != 0 {
+		return false
+	}
+	times := len(byteS) / len(sub)
+	for i := 0; i < times; i++ {
+		for j := 0; i < len(sub);
+		if sub != byteS[i:times*i] {
+			return false
+		}
+	}
 }
