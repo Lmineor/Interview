@@ -1,15 +1,12 @@
 package main
 
-import "fmt"
+import "github.com/Lmineor/algo/str"
 
 func main() {
 	//array.Entry()
 	//hash.Entry()
 	//other.Entry()
-	//str.Entry()
-	var slice []int
-	slice = append(slice,0 )
-	fmt.Println(slice==nil)
+	str.Entry()
 }
 
 
