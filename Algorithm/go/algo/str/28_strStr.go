@@ -9,15 +9,15 @@ package str
 //示例 2: 输入: haystack = "aaaaa", needle = "bba" 输出: -1
 //
 //说明: 当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。 对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。
-
+//"mississippi", "issip"
 func strStr(haystack string, needle string) int {
 	nL := len(needle)
 	if nL == 0 {
 		return 0
 	}
 	l := len(haystack)
-
-	for i := 0; i < l-nL; i++ {
+	i := 0
+	for i <= l-nL {
 		if haystack[i] == needle[0] {
 			var j int = 0
 			for j = 0; j < nL; j++ {
@@ -28,7 +28,10 @@ func strStr(haystack string, needle string) int {
 			if j == nL {
 				return i
 			}
+		}else{
+			i++
 		}
+
 	}
 	return -1
 }
