@@ -1,7 +1,6 @@
 package stack
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -97,8 +96,4 @@ func compute(numLeft, numRight int, op rune) int {
 		return numLeft / numRight
 	}
 	return 0
-}
-
-func Entry() {
-	fmt.Println(computeExpression("1-2*3/3"))
 }

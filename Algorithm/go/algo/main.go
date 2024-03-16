@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/Lmineor/algo/other"
+	"github.com/Lmineor/algo/stack"
 )
 
 func main() {
 	//array.Entry()
 	//hash.Entry()
-	other.Entry()
+	stack.Entry()
 	//str.Entry()
 }
 
