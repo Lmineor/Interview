@@ -24,43 +24,43 @@ func (this *MyStack) Push(x int) {
 func (this *MyStack) Pop() int {
 	var lastOne = -1
 	for len(this.q1) != 0 {
-		lastOne := this.q1[0]
+		lastOne = this.q1[0]
 		if len(this.q1) == 1 {
 			this.q1 = []int{}
 			return lastOne
 		}
 		this.q2 = append(this.q2, lastOne)
 		this.q1 = this.q1[1:]
-		return lastOne
 	}
 	for len(this.q2) != 0 {
-		lastOne := this.q2[0]
-		this.q1 = append(this.q1, lastOne)
+		lastOne = this.q2[0]
 		if len(this.q2) == 1 {
 			this.q2 = []int{}
 			return lastOne
 		}
+		this.q1 = append(this.q1, lastOne)
 		this.q2 = this.q2[1:]
-		return lastOne
 	}
 	return lastOne
 }
 
 func (this *MyStack) Top() int {
 	var lastOne = -1
-	for len(this.q1) != 0 {
-		lastOne := this.q1[0]
-		this.q2 = append(this.q2, lastOne)
-		this.q1 = this.q1[1:]
+	if len(this.q1) !=0{
+		for len(this.q1) != 0 {
+			lastOne = this.q1[0]
+			this.q2 = append(this.q2, lastOne)
+			this.q1 = this.q1[1:]
+		}
+		return lastOne
+	}else{
+		for len(this.q2) != 0 {
+			lastOne = this.q2[0]
+			this.q1 = append(this.q1, lastOne)
+			this.q2 = this.q2[1:]
+		}
 		return lastOne
 	}
-	for len(this.q2) != 0 {
-		lastOne := this.q2[0]
-		this.q1 = append(this.q1, lastOne)
-		this.q2 = this.q2[1:]
-		return lastOne
-	}
-	return lastOne
 }
 
 func (this *MyStack) Empty() bool {

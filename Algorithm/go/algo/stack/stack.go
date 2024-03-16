@@ -12,6 +12,7 @@ func Entry(){
 	//fmt.Println(s.Peek())
 	s.Push(3)
 	s.Push(4)
+	fmt.Println(s.Top())
 	fmt.Println(s.Pop())
 	s.Push(5)
 	fmt.Println(s.Pop())
