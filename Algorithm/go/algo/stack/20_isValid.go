@@ -17,22 +17,22 @@ func isValid(s string) bool {
 	var f = "}"
 
 	stack := make([]string, 0)
-	for ss := range s{
+	for _, ss := range s {
 		switch string(ss) {
-		case a,c,e:
-			stack = append(stack, a)
+		case a, c, e:
+			stack = append(stack, string(ss))
 		case b:
-			if stack[len(stack)-1] != a{
+			if len(stack) == 0 || stack[len(stack)-1] != a {
 				return false
 			}
 			stack = stack[:len(stack)-1]
 		case d:
-			if stack[len(stack)-1] != c{
+			if len(stack) == 0 || stack[len(stack)-1] != c {
 				return false
 			}
 			stack = stack[:len(stack)-1]
 		case f:
-			if stack[len(stack)-1] != e{
+			if len(stack) == 0 || stack[len(stack)-1] != e {
 				return false
 			}
 			stack = stack[:len(stack)-1]
@@ -40,4 +40,3 @@ func isValid(s string) bool {
 	}
 	return len(stack) == 0
 }
-
