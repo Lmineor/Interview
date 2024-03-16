@@ -1,44 +1,70 @@
 package stack
 
 type MyStack struct {
-	InQueue  []int
-	OutQueue []int
+	q1 []int
+	q2 []int
 }
 
-func Constructor() MyStack {
+func Constructor1() MyStack {
 	return MyStack{
-		InQueue:  make([]int, 0),
-		OutQueue: make([]int, 0),
+		q1: make([]int, 0),
+		q2: make([]int, 0),
 	}
 }
 
 func (this *MyStack) Push(x int) {
-	this.InQueue = append(this.InQueue, x)
+	q1Len := len(this.q1)
+	if q1Len != 0 {
+		this.q1 = append(this.q1, x)
+	} else {
+		this.q2 = append(this.q2, x)
+	}
 }
 
 func (this *MyStack) Pop() int {
-	inLen, outLen := len(this.InQueue), this.OutQueue
-	if outLen == 0{
-		if inLen == 0{
-			return -1
+	var lastOne = -1
+	for len(this.q1) != 0 {
+		lastOne := this.q1[0]
+		if len(this.q1) == 1 {
+			this.q1 = []int{}
+			return lastOne
 		}
-		for i:= inLen-1; i>=0; i--{
-			this.OutQueue = append(this.OutQueue, this.InQueue[i])
-		}
-		this.InQueue = []int{}
-		outLen = len(this.OutQueue)
+		this.q2 = append(this.q2, lastOne)
+		this.q1 = this.q1[1:]
+		return lastOne
 	}
-	val := this.OutQueue[outLen-1]
+	for len(this.q2) != 0 {
+		lastOne := this.q2[0]
+		this.q1 = append(this.q1, lastOne)
+		if len(this.q2) == 1 {
+			this.q2 = []int{}
+			return lastOne
+		}
+		this.q2 = this.q2[1:]
+		return lastOne
+	}
+	return lastOne
 }
 
 func (this *MyStack) Top() int {
-
-<-1,2,3,4,5,6,7<-
-<-1,2,3,4,5,6,7,
+	var lastOne = -1
+	for len(this.q1) != 0 {
+		lastOne := this.q1[0]
+		this.q2 = append(this.q2, lastOne)
+		this.q1 = this.q1[1:]
+		return lastOne
+	}
+	for len(this.q2) != 0 {
+		lastOne := this.q2[0]
+		this.q1 = append(this.q1, lastOne)
+		this.q2 = this.q2[1:]
+		return lastOne
+	}
+	return lastOne
 }
 
 func (this *MyStack) Empty() bool {
-
+	return len(this.q1) == 0 && len(this.q2) == 0
 }
 
 /**

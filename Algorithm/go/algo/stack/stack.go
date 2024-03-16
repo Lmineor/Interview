@@ -4,7 +4,7 @@ import "fmt"
 
 func Entry(){
 	//fmt.Println(computeExpression("1-2*3/3"))
-	s := Constructor()
+	s := Constructor1()
 	//fmt.Println(s.Pop())
 	//fmt.Println(s.Peek())
 	s.Push(1)
