@@ -26,14 +26,16 @@ func (this *MyQueue) Push(x int) {
 
 func (this *MyQueue) Pop() int {
 	inLen,outLen := len(this.StackIn), len(this.StackOut)
-	if inLen == 0 && outLen == 0{
-		return -1
+	if outLen== 0{
+		if inLen == 0{
+			return -1
+		}
+		for i:=inLen-1;i>=0;i--{
+			this.StackOut = append(this.StackOut, this.StackIn[i])
+		}
+		outLen = len(this.StackOut)
+		this.StackIn = []int{}
 	}
-	for i:=inLen-1;i>=0;i--{
-		this.StackOut = append(this.StackOut, this.StackIn[i])
-	}
-	outLen = len(this.StackOut)
-	this.StackIn = []int{}
 	val := this.StackOut[outLen-1]
 	this.StackOut = this.StackOut[:outLen-1]
 	return val
@@ -41,11 +43,15 @@ func (this *MyQueue) Pop() int {
 
 func (this *MyQueue) Peek() int {
 	inLen,outLen := len(this.StackIn), len(this.StackOut)
-	if inLen == 0 && outLen == 0{
-		return -1
-	}
-	for i:=inLen-1;i>=0;i--{
-		this.StackOut = append(this.StackOut, this.StackIn[i])
+	if outLen== 0{
+		if inLen == 0{
+			return -1
+		}
+		for i:=inLen-1;i>=0;i--{
+			this.StackOut = append(this.StackOut, this.StackIn[i])
+		}
+		outLen = len(this.StackOut)
+		this.StackIn = []int{}
 	}
 	return this.StackOut[len(this.StackOut)-1]
 }
