@@ -32,7 +32,9 @@ func (this *MyStack) Pop() int {
 }
 
 func (this *MyStack) Top() int {
-1,2,3,4,5,6,7
+
+<-1,2,3,4,5,6,7<-
+<-1,2,3,4,5,6,7,
 }
 
 func (this *MyStack) Empty() bool {
