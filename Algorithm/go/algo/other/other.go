@@ -17,5 +17,12 @@ func fib(n int) int {
 
 func Entry() {
 
-	fmt.Println(mySqrt(8))
+	//fmt.Println(mySqrt(8))
+	lru :=Constructor()
+	fmt.Println(lru.Get(123))
+	for i:=0; i<15;  i++{
+		lru.Put(i, i)
+	}
+	fmt.Println(lru.Get(14))
+	fmt.Println(lru.Cache)
 }
