@@ -1,6 +1,8 @@
 package stack
 
-import "strconv"
+import (
+	"strconv"
+)
 
 const (
 	plus  = "+"
@@ -10,38 +12,32 @@ const (
 )
 
 func evalRPN(tokens []string) int {
-	i := 0
-	for len(tokens) > 1 {
-		if !isNum(tokens[i]){
-			leftNum := tokens[i-2]
-			rightNum := tokens[i-1]
-			op := tokens[i]
-			val := cal(leftNum,rightNum,op)
+	numStack := make([]int, 0)
+	for _, token := range tokens{
+		switch token {
+		case plus, minus,cheng,chu:
+			rightNum := numStack[len(numStack)-1]
+			leftNum := numStack[len(numStack)-2]
+			numStack = numStack[:len(numStack)-2]
+			val := cal(leftNum, rightNum, token)
+			numStack = append(numStack, val)
+		default:
+			num, _:= strconv.Atoi(token)
+			numStack  = append(numStack, num)
 		}
 	}
+	return numStack[0]
 }
 
-func cal(leftNum, rightNum, op string)int{
-	l,_ := strconv.Atoi(leftNum)
-	r, _:= strconv.Atoi(rightNum)
+func cal(l, r int, op string) int {
 	switch op {
 	case plus:
-		return l+r
+		return l + r
 	case minus:
-		return l-r
+		return l - r
 	case cheng:
-		return l*r
-	case chu:
-		return l/r
+		return l * r
+	default:
+		return l / r
 	}
-}
-
-func isNum(c string) bool {
-	nums := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
-	for _, num := range nums {
-		if c == num {
-			return true
-		}
-	}
-	return false
 }
