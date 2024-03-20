@@ -1,5 +1,7 @@
 package stack
 
+import "strconv"
+
 const (
 	plus  = "+"
 	minus = "-"
@@ -13,13 +15,25 @@ func evalRPN(tokens []string) int {
 		if !isNum(tokens[i]){
 			leftNum := tokens[i-2]
 			rightNum := tokens[i-1]
-			op = tokens[i]
+			op := tokens[i]
+			val := cal(leftNum,rightNum,op)
 		}
 	}
 }
 
 func cal(leftNum, rightNum, op string)int{
-	
+	l,_ := strconv.Atoi(leftNum)
+	r, _:= strconv.Atoi(rightNum)
+	switch op {
+	case plus:
+		return l+r
+	case minus:
+		return l-r
+	case cheng:
+		return l*r
+	case chu:
+		return l/r
+	}
 }
 
 func isNum(c string) bool {
