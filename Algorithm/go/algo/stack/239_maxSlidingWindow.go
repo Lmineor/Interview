@@ -5,22 +5,29 @@ func maxSlidingWindow(nums []int, k int) []int {
 	left:=0
 	right := k
 	result := make([]int, 0)
-	currentMax := max(nums[0:k])
+	currentMax, index := max(nums[0:k])
 	result = append(result, currentMax)
 	for right < len(nums){
 		right++
-		if nums[right]>currentMax{
-			result = append(result, nums[right])
+		left++
+		if nums[right]>=currentMax{
+			index = right
 		}
-	}
-}
-
-func max(nums []int)int{
-	result := nums[0]
-	for _,v := range nums{
-		if v > result{
-			result = v
+		if index >=left{
+			result = append(result, nums[index])
 		}
 	}
 	return result
+}
+
+func max(nums []int)(index int, value int){
+	result := nums[0]
+	index = 0
+	for k,v := range nums{
+		if v > result{
+			result = v
+			index = k
+		}
+	}
+	return index, result
 }
