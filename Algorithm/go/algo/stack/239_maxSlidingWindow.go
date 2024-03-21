@@ -7,7 +7,7 @@ func maxSlidingWindow(nums []int, k int) []int {
 	result := make([]int, 0)
 	currentMax, index := max(nums[0:k])
 	result = append(result, currentMax)
-	for right < len(nums){
+	for right < len(nums)-1{
 		right++
 		left++
 		if nums[right]>=currentMax{
