@@ -15,6 +15,9 @@ func maxSlidingWindow(nums []int, k int) []int {
 		}
 		if index >=left{
 			result = append(result, nums[index])
+		}else{
+			currentMax, index = max(nums[left:right])
+			result = append(result, currentMax)
 		}
 	}
 	return result
