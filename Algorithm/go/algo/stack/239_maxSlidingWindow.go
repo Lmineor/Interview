@@ -23,14 +23,12 @@ func maxSlidingWindow(nums []int, k int) []int {
 	return result
 }
 
-func max(nums []int)(index int, value int){
-	result := nums[0]
-	index = 0
-	for k,v := range nums{
-		if v > result{
-			result = v
-			index = k
-		}
-	}
-	return index, result
+type MyQueue struct {
+	ele []int
+}
+
+func (q *MyQueue)Pop()int{
+	//pop(value)：如果窗口移除的元素value等于单调队列的出口元素，那么队列弹出元素，否则不用任何操作
+	//push(value)：如果push的元素value大于入口元素的数值，那么就将队列入口的元素弹出，直到push元素的数值小于等于队列入口元素的数值为止
+	
 }
