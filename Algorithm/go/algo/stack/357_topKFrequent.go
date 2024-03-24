@@ -14,16 +14,11 @@ import "sort"
 //输出: [1]
 
 func topKFrequent(nums []int, k int) []int {
-	cache := make(map[int]int, 0)
-	for _, num := range nums{
-		cache[num]++
+	num_map := make(map[int]int)
+	for _, num:= range nums{
+		num_map[num]++
 	}
-	count := make([]int, 0)
-	for _, c := range cache{
-		count = append(count, c)
-	}
-	sort.Ints(count)
-	count = count[len(count)-2:]
-	result := make([]int, 0)
+
+
 }
 
