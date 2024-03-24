@@ -1,5 +1,7 @@
 package stack
 
+// 让队列保持单调递减
+
 func maxSlidingWindow(nums []int, k int) []int {
 	result := make([]int, 0)
 	qq := ConQ()
