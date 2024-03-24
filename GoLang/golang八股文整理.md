@@ -217,7 +217,7 @@ map的特点：
 
 map本身是无序的，且遍历时顺序还会被随机化，如果想顺序遍历map，需要对 map key先排序，再按照key 的顺序遍历map。
 
-see [map顺序读取](./map顺序读取)
+see [map](map.md)
 
 ## 9.2 Map的负载因子是6.5？
 
