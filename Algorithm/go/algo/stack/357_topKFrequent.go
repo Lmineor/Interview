@@ -21,13 +21,11 @@ func topKFrequent(nums []int, k int) []int {
 	for _, num:= range nums{
 		numMap[num]++
 	}
-	countMap := make(map[int]int)
 	var count []int
-	for num, c := range numMap {
-		countMap[c] = num
+	for _, c := range numMap {
 		count = append(count, c)
 	}
-	fmt.Println(countMap)
+	fmt.Println(count)
 	sort.Ints(count)
 	count = count[len(count)-k:]
 
