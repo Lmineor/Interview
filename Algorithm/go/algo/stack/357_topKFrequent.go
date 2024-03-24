@@ -1,6 +1,9 @@
 package stack
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 //给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
 //
@@ -14,11 +17,24 @@ import "sort"
 //输出: [1]
 
 func topKFrequent(nums []int, k int) []int {
-	num_map := make(map[int]int)
+	numMap := make(map[int]int)
 	for _, num:= range nums{
-		num_map[num]++
+		numMap[num]++
 	}
+	countMap := make(map[int]int)
+	var count []int
+	for num, c := range numMap {
+		countMap[c] = num
+		count = append(count, c)
+	}
+	fmt.Println(countMap)
+	sort.Ints(count)
+	count = count[len(count)-k:]
 
-
+	var result []int
+	for _, c := range count{
+		result = append(result, countMap[c])
+	}
+	return result
 }
 
