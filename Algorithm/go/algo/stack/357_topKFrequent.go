@@ -1,7 +1,6 @@
 package stack
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -21,18 +20,13 @@ func topKFrequent(nums []int, k int) []int {
 	for _, num:= range nums{
 		numMap[num]++
 	}
-	var count []int
-	for _, c := range numMap {
-		count = append(count, c)
+	result := make([]int, 0)
+	for key, _ := range numMap{
+		result = append(result, key)
 	}
-	fmt.Println(count)
-	sort.Ints(count)
-	count = count[len(count)-k:]
-
-	var result []int
-	for _, c := range count{
-		result = append(result, countMap[c])
-	}
-	return result
+	sort.Slice(result, func(i, j int) bool {
+		return numMap[result[i]] > numMap[result[j]]
+	})
+	return result[:k]
 }
 
