@@ -52,23 +52,16 @@ func PrintInLevel(t *Tree) [][]int {
 	}
 	return levelResult
 }
-
-
-func preorderTraversal(root *TreeNode) []int {
+func preorderTraversal(root *Tree) []int {
+	var f func(root *Tree)
 	var result []int
-	f := func(root *TreeNode) {
+	f = func (root *Tree){
 		if root != nil{
 			result = append(result, root.Val)
-			preorder(root.Left)
-			preorder(root.Right)
+			f(root.Left)
+			f(root.Right)
 		}
 	}
-	func preorder(root *TreeNode){
-		if root != nil{
-			result = append(result, root.Val)
-			preorder(root.Left)
-			preorder(root.Right)
-		}
-	}(root)
+	f(root)
 	return result
 }
