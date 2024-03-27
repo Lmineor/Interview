@@ -65,3 +65,32 @@ func preorderTraversal(root *Tree) []int {
 	f(root)
 	return result
 }
+
+func postorderTraversal(root *Tree) []int {
+	var f func(root *Tree)
+	var result []int
+	f = func (root *Tree){
+		if root != nil{
+			f(root.Left)
+			f(root.Right)
+			result = append(result, root.Val)
+		}
+	}
+	f(root)
+	return result
+}
+
+
+func inorderTraversal(root *Tree)[]int{
+	var f func(root *Tree)
+	var result []int
+	f = func(root *Tree){
+		if root != nil{
+			f(root.Left)
+			result = append(result, root.Val)
+			f(root.Right)
+		}
+	}
+	f(root)
+	return result
+}
