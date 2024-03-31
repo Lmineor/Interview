@@ -70,7 +70,7 @@ func inorderTraversalByLevel(root *Tree) []int {
 	}
 	p := root
 	level := Queue{ele: make([]*Tree, 0)}
-	for !level.Empty() {
+	for !level.Empty() || p != nil {
 		if p != nil {
 			level.Push(p)
 			p = p.Left
