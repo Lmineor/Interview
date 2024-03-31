@@ -1,8 +1,6 @@
 package tree
 
-//给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
-
-func levelOrder(root *TreeNode) [][]int {
+func levelOrderBottom(root *TreeNode) [][]int {
 	var result [][]int
 	if root == nil {
 		return result
@@ -27,5 +25,13 @@ func levelOrder(root *TreeNode) [][]int {
 		}
 		result = append(result, currentLevelResult)
 	}
+	reverseS(result)
 	return result
+}
+
+
+func reverseS(s [][]int){
+	for i:= 0; i<len(s)/2; i++{
+		s[i], s[len(s)-1-i] = s[len(s)-1-i],s[i]
+	}
 }

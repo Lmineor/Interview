@@ -2,18 +2,18 @@ package tree
 
 import "fmt"
 
-type Tree struct {
+type TreeNode struct {
 	Val   int
-	Left  *Tree
-	Right *Tree
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func Build() *Tree {
-	root := &Tree{
+func Build() *TreeNode {
+	root := &TreeNode{
 		Val: 1,
 	}
-	root.Left = &Tree{Val: 2, Left: &Tree{Val: 4}, Right: &Tree{Val: 5}}
-	root.Right = &Tree{Val: 3, Left: &Tree{Val: 6}, Right: &Tree{Val: 7}}
+	root.Left = &TreeNode{Val: 2, Left: &TreeNode{Val: 4}, Right: &TreeNode{Val: 5}}
+	root.Right = &TreeNode{Val: 3, Left: &TreeNode{Val: 6}, Right: &TreeNode{Val: 7}}
 	return root
 }
 
@@ -22,8 +22,8 @@ func Entry() {
 	fmt.Println(levelOrder(t))
 }
 
-func BuildOrderTree(data []int) *Tree {
-	var tree *Tree
+func BuildOrderTree(data []int) *TreeNode {
+	var tree *TreeNode
 	for _, d := range data {
 		tree = insertNodeToTreeNoRec(tree, d)
 	}
@@ -31,9 +31,9 @@ func BuildOrderTree(data []int) *Tree {
 	return tree
 }
 
-func insetNodeToTree(t *Tree, val int) *Tree {
+func insetNodeToTree(t *TreeNode, val int) *TreeNode {
 	if t == nil {
-		return &Tree{Val: val}
+		return &TreeNode{Val: val}
 	}
 	if val < t.Val {
 		t.Left = insetNodeToTree(t.Left, val)
@@ -43,8 +43,8 @@ func insetNodeToTree(t *Tree, val int) *Tree {
 	return t
 }
 
-func insertNodeToTreeNoRec(t *Tree, val int) *Tree {
-	newNode := &Tree{Val: val}
+func insertNodeToTreeNoRec(t *TreeNode, val int) *TreeNode {
+	newNode := &TreeNode{Val: val}
 	if t == nil {
 		return newNode
 	}

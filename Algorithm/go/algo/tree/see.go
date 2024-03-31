@@ -2,7 +2,7 @@ package tree
 
 import "fmt"
 
-func PrintInOrder(t *Tree) {
+func PrintInOrder(t *TreeNode) {
 	if t != nil {
 		PrintInOrder(t.Left)
 		fmt.Println(t.Val)
@@ -10,7 +10,7 @@ func PrintInOrder(t *Tree) {
 	}
 }
 
-func PrintPreOrder(t *Tree) {
+func PrintPreOrder(t *TreeNode) {
 	if t != nil {
 		fmt.Println(t.Val)
 		PrintPreOrder(t.Left)
@@ -18,15 +18,15 @@ func PrintPreOrder(t *Tree) {
 	}
 }
 
-func PrintPostOrder(t *Tree) {
+func PrintPostOrder(t *TreeNode) {
 	if t != nil {
 		PrintPostOrder(t.Left)
 		PrintPostOrder(t.Right)
 		fmt.Println(t.Val)
 	}
 }
-func PrintInLevel(t *Tree) [][]int {
-	var level []*Tree
+func PrintInLevel(t *TreeNode) [][]int {
+	var level []*TreeNode
 	var levelResult [][]int
 	var currentLevelResult []int
 	if t == nil {
