@@ -10,7 +10,7 @@ type Tree struct {
 
 func Entry() {
 	t := BuildOrderTree([]int{1, 2, 3, 4, 5, 6, 7})
-	fmt.Println(preorderTraversalByLevel(t))
+	fmt.Println(inorderTraversalByLevel(t))
 }
 
 func BuildOrderTree(data []int) *Tree {

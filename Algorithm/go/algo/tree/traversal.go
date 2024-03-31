@@ -65,22 +65,22 @@ func preorderTraversalByLevel(root *Tree) []int {
 
 func inorderTraversalByLevel(root *Tree) []int {
 	var result []int
+	if root == nil {
+		return result
+	}
+	p := root
 	level := Queue{ele: make([]*Tree, 0)}
-	level.Push(root)
-
 	for !level.Empty() {
-		currentLevelNodeCount := len(level.ele)
-		for i := 0; i < currentLevelNodeCount; i++ {
-			node := level.Top()
-			
-			if node.Left != nil {
-				level.Push(node.Left)
-			}
-			if node.Right != nil {
-				level.Push(node.Right)
-			}
+		if p != nil {
+			level.Push(p)
+			p = p.Left
+		} else {
+			p = level.Pop()
+			result = append(result, p.Val)
+			p = p.Right
 		}
 	}
+
 	return result
 }
 
@@ -98,7 +98,7 @@ func (q *Queue) Pop() *Tree {
 	return node
 }
 
-func (q *Queue)Top() *Tree{
+func (q *Queue) Top() *Tree {
 	return q.ele[0]
 }
 
