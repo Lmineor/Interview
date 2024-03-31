@@ -44,7 +44,7 @@ func inorderTraversal(root *Tree) []int {
 	return result
 }
 
-func preorderTraversalByLevel(root *Tree) []int {
+func TraversalByLevel(root *Tree) []int {
 	var result []int
 	level := Queue{ele: make([]*Tree, 0)}
 	level.Push(root)
@@ -65,6 +65,23 @@ func preorderTraversalByLevel(root *Tree) []int {
 	return result
 }
 
+func preorderTraversalByLevel(root *Tree) []int {
+	var result []int
+	level := Queue{ele: make([]*Tree, 0)}
+	level.Push(root)
+
+	for !level.Empty() {
+		node := level.Pop()
+		result = append(result, node.Val)
+		if node.Left != nil {
+			level.Push(node.Left)
+		}
+		if node.Right != nil {
+			level.Push(node.Right)
+		}
+	}
+	return result
+}
 
 // 非迭代中序遍历二叉树
 func inorderTraversalNoRec(root *Tree) []int {
@@ -89,11 +106,12 @@ func inorderTraversalNoRec(root *Tree) []int {
 	return result
 }
 
-func postOrderTraversalNoRec(root *Tree)[]int{
+func postOrderTraversalNoRec(root *Tree) []int {
 	var result []int
-	if root == nil{
+	if root == nil {
 		return result
 	}
+	return result
 }
 
 type Queue struct {
