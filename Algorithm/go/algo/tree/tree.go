@@ -19,7 +19,7 @@ func Build() *Tree {
 
 func Entry() {
 	t := Build()
-	fmt.Println(preorderTraversalByLevel(t))
+	fmt.Println(postOrderTraversalNoRec(t))
 }
 
 func BuildOrderTree(data []int) *Tree {

@@ -108,10 +108,27 @@ func inorderTraversalNoRec(root *Tree) []int {
 
 func postOrderTraversalNoRec(root *Tree) []int {
 	var result []int
-	if root == nil {
-		return result
+	level := Queue{ele: make([]*Tree, 0)}
+	level.Push(root)
+
+	for !level.Empty() {
+		node := level.Pop()
+		result = append(result, node.Val)
+		if node.Left != nil {
+			level.Push(node.Left)
+		}
+		if node.Right != nil {
+			level.Push(node.Right)
+		}
 	}
+	reverse(result)
 	return result
+}
+
+func reverse(s []int){
+	for i:= 0; i<len(s)/2; i++{
+		s[i], s[len(s)-1-i] = s[len(s)-1-i],s[i]
+	}
 }
 
 type Queue struct {
