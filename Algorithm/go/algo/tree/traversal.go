@@ -1,5 +1,7 @@
 package tree
 
+import "fmt"
+
 func preorderTraversal(root *Tree) []int {
 	var f func(root *Tree)
 	var result []int
@@ -63,7 +65,9 @@ func preorderTraversalByLevel(root *Tree) []int {
 	return result
 }
 
-func inorderTraversalByLevel(root *Tree) []int {
+
+// 非迭代中序遍历二叉树
+func inorderTraversalNoRec(root *Tree) []int {
 	var result []int
 	if root == nil {
 		return result
@@ -75,13 +79,21 @@ func inorderTraversalByLevel(root *Tree) []int {
 			level.Push(p)
 			p = p.Left
 		} else {
-			p = level.Pop()
+			p = level.PopRight()
+			fmt.Println(p.Val)
 			result = append(result, p.Val)
 			p = p.Right
 		}
 	}
 
 	return result
+}
+
+func postOrderTraversalNoRec(root *Tree)[]int{
+	var result []int
+	if root == nil{
+		return result
+	}
 }
 
 type Queue struct {
@@ -100,6 +112,12 @@ func (q *Queue) Pop() *Tree {
 
 func (q *Queue) Top() *Tree {
 	return q.ele[0]
+}
+
+func (q *Queue) PopRight() *Tree {
+	node := q.ele[len(q.ele)-1]
+	q.ele = q.ele[:len(q.ele)-1]
+	return node
 }
 
 func (q *Queue) Empty() bool {

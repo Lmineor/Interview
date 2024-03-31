@@ -8,9 +8,18 @@ type Tree struct {
 	Right *Tree
 }
 
+func Build() *Tree {
+	root := &Tree{
+		Val: 1,
+	}
+	root.Left = &Tree{Val: 2, Left: &Tree{Val: 4}, Right: &Tree{Val: 5}}
+	root.Right = &Tree{Val: 3, Left: &Tree{Val: 6}, Right: &Tree{Val: 7}}
+	return root
+}
+
 func Entry() {
-	t := BuildOrderTree([]int{1, 2, 3, 4, 5, 6, 7})
-	fmt.Println(inorderTraversalByLevel(t))
+	t := Build()
+	fmt.Println(inorderTraversalNoRec(t))
 }
 
 func BuildOrderTree(data []int) *Tree {
