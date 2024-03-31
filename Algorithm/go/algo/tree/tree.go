@@ -1,11 +1,17 @@
 package tree
 
+import "fmt"
+
 type Tree struct {
 	Val   int
 	Left  *Tree
 	Right *Tree
 }
 
+func Entry() {
+	t := BuildOrderTree([]int{1, 2, 3, 4, 5, 6, 7})
+	fmt.Println(preorderTraversalByLevel(t))
+}
 
 func BuildOrderTree(data []int) *Tree {
 	var tree *Tree
@@ -53,4 +59,3 @@ func insertNodeToTreeNoRec(t *Tree, val int) *Tree {
 	}
 	return t
 }
-
