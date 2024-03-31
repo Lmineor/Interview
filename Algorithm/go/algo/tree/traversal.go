@@ -72,8 +72,7 @@ func inorderTraversalByLevel(root *Tree) []int {
 		currentLevelNodeCount := len(level.ele)
 		for i := 0; i < currentLevelNodeCount; i++ {
 			node := level.Top()
-			if node.
-			result = append(result, node.Val)
+			
 			if node.Left != nil {
 				level.Push(node.Left)
 			}
