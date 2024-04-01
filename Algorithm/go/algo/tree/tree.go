@@ -19,7 +19,7 @@ func Build() *TreeNode {
 
 func Entry() {
 	t := Build()
-	fmt.Println(levelOrder(t))
+	fmt.Println(averageOfLevels(t))
 }
 
 func BuildOrderTree(data []int) *TreeNode {
