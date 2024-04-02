@@ -17,8 +17,17 @@ func Build() *TreeNode {
 	return root
 }
 
+func BuildNode() *Node {
+	root := &Node{
+		Val: 1,
+	}
+	child1 := &Node{Val: 3, Children: []*Node{&Node{Val: 5}, {Val: 6}}}
+	root.Children = append(root.Children, child1, &Node{Val: 2}, &Node{Val: 4})
+	return root
+}
+
 func Entry() {
-	t := Build()
+	t := BuildNode()
 	fmt.Println(levelOrderN(t))
 }
 

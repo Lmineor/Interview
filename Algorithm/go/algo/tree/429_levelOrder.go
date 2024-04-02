@@ -14,13 +14,14 @@ func levelOrderN(root *Node) [][]int {
 	var level []*Node
 
 	if root == nil{
-		return root
+		return result
 	}
 	var levelResult []int
 	level  = append(level, root)
 	for len(level)> 0{
 		levelResult = []int{}
-		for i:= 0; i< len(level); i++{
+		currentLen := len(level)
+		for i:= 0; i< currentLen; i++{
 			node := level[0]
 			levelResult = append(levelResult, node.Val)
 			level = level[1:]
