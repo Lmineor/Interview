@@ -27,8 +27,8 @@ func BuildNode() *Node {
 }
 
 func Entry() {
-	t := BuildNode()
-	fmt.Println(levelOrderN(t))
+	t := Build()
+	fmt.Println(largestValues(t))
 }
 
 func BuildOrderTree(data []int) *TreeNode {
