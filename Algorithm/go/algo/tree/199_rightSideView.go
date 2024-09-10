@@ -18,7 +18,7 @@ func rightSideView(root *TreeNode) []int {
 		currentLevel = []int{}
 		for i := 0; i < currentLevelLen; i++ {
 			node := level[0]
-			level = level[1:len(level)]
+			level = level[1:]
 			currentLevel = append(currentLevel, node.Val)
 			if node.Left != nil {
 				level = append(level, node.Left)

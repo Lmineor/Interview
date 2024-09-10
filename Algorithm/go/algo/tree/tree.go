@@ -1,7 +1,5 @@
 package tree
 
-import "fmt"
-
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -27,8 +25,9 @@ func BuildNode() *Node {
 }
 
 func Entry() {
-	t := Build()
-	fmt.Println(largestValues(t))
+	//t := Build()
+	//fmt.Println(largestValues(t))
+	CBuild()
 }
 
 func BuildOrderTree(data []int) *TreeNode {
