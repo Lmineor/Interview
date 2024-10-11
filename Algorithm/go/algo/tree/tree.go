@@ -1,5 +1,7 @@
 package tree
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -7,12 +9,43 @@ type TreeNode struct {
 }
 
 func Build() *TreeNode {
-	root := &TreeNode{
-		Val: 1,
+	node6 := &TreeNode{
+		Val: 6,
 	}
-	root.Left = &TreeNode{Val: 2, Left: &TreeNode{Val: 4}, Right: &TreeNode{Val: 5}}
-	root.Right = &TreeNode{Val: 3, Left: &TreeNode{Val: 6}, Right: &TreeNode{Val: 7}}
-	return root
+	node2 := &TreeNode{
+		Val: 2,
+	}
+	node8 := &TreeNode{
+		Val: 8,
+	}
+	node0 := &TreeNode{
+		Val: 0,
+	}
+	node4 := &TreeNode{
+		Val: 4,
+	}
+	node7 := &TreeNode{
+		Val: 7,
+	}
+	node9 := &TreeNode{
+		Val: 9,
+	}
+	node3 := &TreeNode{
+		Val: 3,
+	}
+	node5 := &TreeNode{
+		Val: 5,
+	}
+	node6.Left = node2
+	node6.Right = node8
+	node2.Left = node0
+	node2.Right = node4
+	node8.Left = node7
+	node8.Right = node9
+	node4.Left = node3
+	node4.Right = node5
+
+	return node6
 }
 
 func BuildNode() *Node {
@@ -27,7 +60,13 @@ func BuildNode() *Node {
 func Entry() {
 	//t := Build()
 	//fmt.Println(largestValues(t))
-	CBuild()
+	//CBuild()
+	root := Build()
+	dfsSearch(root, 4)
+	for _, v := range result {
+		fmt.Println(v.Val)
+	}
+	//fmt.Println(stack)
 }
 
 func BuildOrderTree(data []int) *TreeNode {
